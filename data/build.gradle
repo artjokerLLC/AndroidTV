@@ -24,11 +24,14 @@ dependencies {
 
     api project(':core')
 
-    implementation "com.google.code.gson:gson:$versions.gsonVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
-    api "com.squareup.retrofit2:retrofit:$versions.retrofit"
-    api "com.squareup.okhttp3:logging-interceptor:$versions.retrofitLogging"
+    implementation "com.apollographql.apollo:apollo-runtime:$versions.apolloPlugin"
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation "com.apollographql.apollo:apollo-rx2-support:$versions.apolloPlugin"
+//    implementation "com.google.code.gson:gson:$versions.gsonVersion"
+//    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+//    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+//    api "com.squareup.retrofit2:retrofit:$versions.retrofit"
+//    api "com.squareup.okhttp3:logging-interceptor:$versions.retrofitLogging"
 
     implementation "com.google.dagger:dagger:$versions.dagger"
     annotationProcessor "com.google.dagger:dagger-compiler:$versions.dagger"

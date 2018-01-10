@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.apollographql.android'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -42,4 +43,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     implementation project(':data')
+
+    //ExoPlayer
+    compile 'com.google.android.exoplayer:exoplayer:2.6.1'
 }
