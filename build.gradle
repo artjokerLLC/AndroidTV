@@ -3,15 +3,15 @@
 buildscript {
 
     apply from: 'versions.gradle'
-
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$versions.gradlePlugin"
         classpath "com.apollographql.apollo:apollo-gradle-plugin:$versions.apolloPlugin"
-
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

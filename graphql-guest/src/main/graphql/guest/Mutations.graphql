@@ -1,0 +1,24 @@
+mutation register($socialNetwork: Int,
+                  $userID: String,
+                  $email: String,
+                  $accessToken: String,
+                  $deviceToken: String,
+                  $firebaseToken: String,
+                  $nickname: String,
+                  $avatarURL: String,
+                  $promocode: String) {
+
+    register(
+             socialNetwork: $socialNetwork
+             userID: $userID
+             email: $email
+             accessToken: $accessToken
+             deviceToken: $deviceToken
+             firebaseToken: $firebaseToken
+             nickName: $nickname
+             avatarURL: $avatarURL
+             promocode: $promocode
+             ) {
+      id
+    }
+}
