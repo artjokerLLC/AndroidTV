@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'com.apollographql.android'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -12,27 +13,43 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "GRAPH_AUTH_DATA_HOST", "\"http://smbdev-env-3.eu-central-1.elasticbeanstalk.com/v1/graphql/guest\""
+            buildConfigField "String", "GRAPH_QL_DATA_HOST", "\"http://smbdev-env-3.eu-central-1.elasticbeanstalk.com/v1/graphql\""
+
+        }
         release {
+            buildConfigField "String", "GRAPH_AUTH_DATA_HOST", "\"http://smbdev-env-3.eu-central-1.elasticbeanstalk.com/v1/graphql/guest\""
+            buildConfigField "String", "GRAPH_QL_DATA_HOST", "\"http://smbdev-env-3.eu-central-1.elasticbeanstalk.com/v1/graphql\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    configurations.all {
+        resolutionStrategy.force "com.android.support:support-v4:$versions.support"
+    }
+
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':core')
-
-    implementation "com.apollographql.apollo:apollo-runtime:$versions.apolloPlugin"
-    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
-    implementation "com.apollographql.apollo:apollo-rx2-support:$versions.apolloPlugin"
-//    implementation "com.google.code.gson:gson:$versions.gsonVersion"
-//    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
-//    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
-//    api "com.squareup.retrofit2:retrofit:$versions.retrofit"
-//    api "com.squareup.okhttp3:logging-interceptor:$versions.retrofitLogging"
-
+    api "com.apollographql.apollo:apollo-runtime:$versions.apolloPlugin"
+    api "com.apollographql.apollo:apollo-rx2-support:$versions.apolloPlugin"
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    api "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
     implementation "com.google.dagger:dagger:$versions.dagger"
-    annotationProcessor "com.google.dagger:dagger-compiler:$versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    implementation "com.facebook.android:facebook-android-sdk:$versions.facebook"
+    implementation group: 'com.google.code.gson', name: 'gson', version: "$versions.gsonVersion"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    api project(':graphql-data')
+    api project(':graphql-guest')
+}
+repositories {
+    mavenCentral()
 }

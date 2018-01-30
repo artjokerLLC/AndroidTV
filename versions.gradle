@@ -17,11 +17,15 @@ ext {
             support         : '27.0.2',
             retrofit        : '2.3.0',
             retrofitLogging : '3.4.1',
-            gsonVersion     : '2.8.0',
+            gsonVersion     : '2.8.2',
             rxAndroid       : '2.0.1',
-            rxJava          : '2.1.4',
+            rxJava          : '2.1.9',
             dagger          : '2.11',
             inject          : '1',
             javaxAnnotation : '1.0',
+            rxFacebook      : '2.0.1',
+            facebook        : '4.30.0',
+            okhttp          : '3.9.1',
+            kotlin          : '1.2.21',
     ]
 }

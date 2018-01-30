@@ -1,1 +1,1 @@
-include ':presentation', ':data', ':core'
+include ':presentation', ':data', ':core', ':graphql-data', ':graphql-guest'

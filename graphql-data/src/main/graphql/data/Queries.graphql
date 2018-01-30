@@ -1,0 +1,16 @@
+query InfluenceQuery{
+  influence{
+    id
+    nickname
+  }
+}
+
+query VideosQuery{
+videos{
+      chapter{
+        media{
+          hls
+        }
+      }
+    }
+}
