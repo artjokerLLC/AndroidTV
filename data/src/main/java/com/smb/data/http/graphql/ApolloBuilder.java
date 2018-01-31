@@ -3,7 +3,8 @@ package com.smb.data.http.graphql;
 import com.apollographql.apollo.ApolloClient;
 
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
+
+import static okhttp3.logging.HttpLoggingInterceptor.Level.BODY;
 
 /**
  * Created by dev on 24.01.18.
@@ -18,10 +19,13 @@ public class ApolloBuilder {
     }
 
     public ApolloClient create() {
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.addInterceptor(logging);
+        okhttp3.logging.HttpLoggingInterceptor interceptor = new okhttp3.logging.HttpLoggingInterceptor();
+        interceptor.setLevel(BODY);
+        builder.addNetworkInterceptor(interceptor);
+        builder.addInterceptor(interceptor);
+
         return ApolloClient.builder()
                 .serverUrl(url)
                 .okHttpClient(builder.build())

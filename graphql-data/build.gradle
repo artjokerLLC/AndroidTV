@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.apollographql.android'
+
 android {
     compileSdkVersion 26
 
@@ -24,6 +25,24 @@ android {
 
 }
 
+task loadSchema(type: Exec, dependsOn: assemble) {
+    def schemaPath = "${projectDir}/src/main/graphql" + "/data/"
+    def output = '--output ' + schemaPath
+    def hashStdOut = new ByteArrayOutputStream()
+    def serverUrl = 'http://smbdev-env-3.eu-central-1.elasticbeanstalk.com/v1/graphql'
+    def isWin = System.properties['os.name'].toLowerCase().contains('windows')
+    exec {
+        workingDir schemaPath
+        ignoreExitValue true
+        if (isWin) {
+            commandLine 'cmd', '/c', 'apollo-codegen', 'download-schema', serverUrl, output, '--header', 'Authorization: Bearer testme'
+        } else {
+            commandLine 'apollo-codegen', 'download-schema', serverUrl, output, '--header', 'Authorization: Bearer testme'
+        }
+        standardOutput = hashStdOut
+    }
+    println hashStdOut.toString().trim()
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.apollographql.apollo:apollo-runtime:$versions.apolloPlugin"

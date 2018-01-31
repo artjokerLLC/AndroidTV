@@ -1,0 +1,8 @@
+fragment UserInformation on Viewer{
+    id
+    token
+    nickname
+    email
+    avatar
+    gender
+}

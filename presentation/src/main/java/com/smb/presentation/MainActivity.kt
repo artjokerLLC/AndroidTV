@@ -4,6 +4,7 @@ package com.smb.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import com.arellomobile.mvp.MvpActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -31,12 +32,8 @@ class MainActivity : MvpActivity(), MainView {
         mMainPresenter.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onSocialLoginResult() {
-
-    }
-
-    override fun onSocialLoginError() {
-
+    override fun onSocialLoginResult(result: Any) {
+        Log.e("~~~~", "" + result)
     }
 
     companion object {
