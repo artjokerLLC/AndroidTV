@@ -50,9 +50,7 @@ constructor(context: Context) : SocialNetwork {
         socialLoginResult.email = jsonObject.getString("email")
         socialLoginResult.nickname = jsonObject.getString("name")
         val picture = jsonObject.getJSONObject("picture")
-        if (picture != null) {
-            socialLoginResult.avatarURL = picture.getString("url")
-        }
+        socialLoginResult.avatarURL = picture?.getJSONObject("data")?.getString("url")
         socialLoginResult.socialNetwork = typeId
     }
 

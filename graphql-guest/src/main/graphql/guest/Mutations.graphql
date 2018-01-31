@@ -18,7 +18,17 @@ mutation register($socialNetwork: Int,
              nickName: $nickname
              avatarURL: $avatarURL
              promocode: $promocode
-             ) {
-      id
-    }
+             ){
+                      ...UserInformation
+                  }
+}
+mutation Authorize($socialNetwork: Int, $userID: String, $deviceToken: String, $firebaseToken: String) {
+    auth(
+         socialNetwork: $socialNetwork
+         userID: $userID
+         deviceToken: $deviceToken
+         firebaseToken: $firebaseToken
+         ) {
+                   ...UserInformation
+               }
 }
