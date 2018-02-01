@@ -20,7 +20,9 @@
         <activity android:name=".presentation.home.HomeActivity" />
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="6c7e28daa57ff8ba3be6591e57e9e62b8a7ac754" />
     </application>
 
 </manifest>

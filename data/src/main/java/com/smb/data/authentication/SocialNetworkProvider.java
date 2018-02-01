@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.smb.data.authentication.networks.Facebook;
 import com.smb.data.authentication.networks.SocialNetwork;
 import com.smb.data.models.SocialLoginResult;
 
@@ -16,8 +15,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
-
-import static com.smb.data.authentication.SocialNetworkType.FACEBOOK;
 
 /**
  * Created by dev on 25.01.18.
@@ -33,24 +30,21 @@ public class SocialNetworkProvider {
     }
 
     public Observable<SocialLoginResult> loginBy(SocialNetworkType socialNetworkType, Activity activity) {
-        switch (socialNetworkType) {
-            case FACEBOOK:
-                return facebookLogin(activity);
-            default:
-                return Observable.empty();
-        }
-    }
-
-    private Observable<SocialLoginResult> facebookLogin(Activity activity) {
-        SocialNetwork facebook = socialNetworks.get(FACEBOOK);
-        if (facebook == null) {
-            facebook = new Facebook(context);
-            socialNetworks.put(FACEBOOK, facebook);
-        }
-        return facebook.login(activity)
+        return getSocialNetwork(socialNetworkType)
+                .login(activity)
                 .subscribeOn(Schedulers.io());
-
     }
+
+
+    private SocialNetwork getSocialNetwork(SocialNetworkType type) {
+        SocialNetwork socialNetwork = socialNetworks.get(type);
+        if (socialNetwork == null) {
+            socialNetwork = SocialNetworkFactory.get(context, type);
+            socialNetworks.put(type, socialNetwork);
+        }
+        return socialNetwork;
+    }
+
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         for (Map.Entry<SocialNetworkType, SocialNetwork> entry : socialNetworks.entrySet()) {
