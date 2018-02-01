@@ -27,5 +27,9 @@ ext {
             facebook        : '4.30.0',
             okhttp          : '3.9.1',
             kotlin          : '1.2.21',
+            secureStorage   : '1.0.0',
+            logging         : '3.9.1',
+            traucer         : '1.0.1',
+            hawk            : '2.0.1',
     ]
 }
