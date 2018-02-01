@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.apollographql.android'
+apply plugin: 'io.fabric'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -42,6 +43,10 @@ dependencies {
     implementation "com.facebook.android:facebook-android-sdk:$versions.facebook"
     implementation "com.squareup.okhttp3:logging-interceptor:$versions.logging"
     implementation "com.orhanobut:hawk:$versions.hawk"
+    implementation("com.twitter.sdk.android:twitter:$versions.twitter@aar") {
+        transitive = true
+    }
+
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     api project(':core')
     api project(':graphql-data')
@@ -51,6 +56,9 @@ dependencies {
     api "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
     api group: 'com.google.code.gson', name: 'gson', version: "$versions.gsonVersion"
     api "com.tspoon.traceur:traceur:$versions.traucer"
+    api('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+        transitive = true
+    }
 
 }
 repositories {

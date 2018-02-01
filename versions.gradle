@@ -31,5 +31,6 @@ ext {
             logging         : '3.9.1',
             traucer         : '1.0.1',
             hawk            : '2.0.1',
+            twitter         : '3.2.0',
     ]
 }
