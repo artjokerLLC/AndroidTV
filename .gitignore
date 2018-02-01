@@ -4,6 +4,7 @@
 /.idea
 .DS_Store
 /build
+/dig
 /captures
 .externalNativeBuild
 Будет удалено .idea/

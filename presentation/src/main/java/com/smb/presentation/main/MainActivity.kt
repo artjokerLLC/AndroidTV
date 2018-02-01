@@ -1,18 +1,19 @@
-package com.smb.presentation
+package com.smb.presentation.main
 
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import com.arellomobile.mvp.MvpActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.smb.R
 import com.smb.data.authentication.SocialNetworkType.FACEBOOK
+import com.smb.presentation.home.HomeActivity
 
 class MainActivity : MvpActivity(), MainView {
+
 
     @InjectPresenter
     lateinit var mMainPresenter: MainPresenter
@@ -32,9 +33,10 @@ class MainActivity : MvpActivity(), MainView {
         mMainPresenter.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onSocialLoginResult(result: Any) {
-        Log.e("~~~~", "" + result)
+    override fun onUserLoggedIn() {
+        startActivity(HomeActivity.getIntent(this))
     }
+
 
     companion object {
         val TAG = "BlankActivity"

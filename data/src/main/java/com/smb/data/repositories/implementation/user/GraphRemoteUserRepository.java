@@ -1,12 +1,15 @@
-package com.smb.data.repositories;
+package com.smb.data.repositories.implementation.user;
 
 
 import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
 import com.smb.data.errors.ErrorMatcher;
 import com.smb.data.http.graphql.GraphqlClientTypes;
+import com.smb.data.mappers.UserMapper;
 import com.smb.data.models.SocialLoginResult;
 import com.smb.data.models.User;
+import com.smb.data.repositories.AbstractRemoteRepository;
+import com.smb.data.repositories.api.RemoteUserRepository;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,11 +27,18 @@ import static com.smb.data.http.graphql.GraphqlClientTypes.AUTHENTICATION;
  * Created by dev on 24.01.18.
  */
 
-public class RemoteUserRepository extends AbstractRemoteRepository {
+public class GraphRemoteUserRepository extends AbstractRemoteRepository implements RemoteUserRepository {
 
     @Inject
-    public RemoteUserRepository(Map<GraphqlClientTypes, ApolloClient> apollo) {
+    public GraphRemoteUserRepository(Map<GraphqlClientTypes, ApolloClient> apollo) {
         super(apollo.get(AUTHENTICATION));
+    }
+
+    @NotNull
+    @Override
+    public Observable<User> getUser(@NotNull SocialLoginResult socialData) {
+        return register(socialData)
+                .flatMap(registerResponse -> getUserObservable(socialData, registerResponse));
     }
 
     private Observable<Response<RegisterMutation.Data>> register(SocialLoginResult data) {
@@ -47,17 +57,6 @@ public class RemoteUserRepository extends AbstractRemoteRepository {
 
     }
 
-    @NotNull
-    public Observable<User> getUser(@NotNull SocialLoginResult socialData) {
-        return register(socialData)
-                .flatMap(registerResponse -> getUserObservable(socialData, registerResponse));
-    }
-
-    private Observable<User> getUserObservable(@NotNull SocialLoginResult socialData, Response<RegisterMutation.Data> registerResponse) {
-        return ErrorMatcher.isError(registerResponse) ? authorize(socialData).map(auth -> User.create(auth.data())) : Observable.just(User.create(registerResponse.data()));
-    }
-
-
     private Observable<Response<AuthorizeMutation.Data>> authorize(SocialLoginResult socialData) {
         AuthorizeMutation mutation = AuthorizeMutation.builder()
                 .deviceToken("1")
@@ -67,6 +66,11 @@ public class RemoteUserRepository extends AbstractRemoteRepository {
                 .build();
         return mutation(mutation);
 
+    }
+
+    private Observable<User> getUserObservable(@NotNull SocialLoginResult socialData, Response<RegisterMutation.Data> registerResponse) {
+        return ErrorMatcher.isError(registerResponse) ? authorize(socialData).map(UserMapper.Companion::getAuthorizedUser)
+                : UserMapper.Companion.getRegisteredUser(registerResponse);
     }
 
 

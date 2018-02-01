@@ -1,7 +1,7 @@
-package com.smb.presentation
+package com.smb.presentation.main
 
 import com.arellomobile.mvp.MvpView
 
 interface MainView : MvpView {
-    fun onSocialLoginResult(result: Any)
+    fun onUserLoggedIn()
 }
