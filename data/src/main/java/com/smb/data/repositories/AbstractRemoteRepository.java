@@ -2,6 +2,7 @@ package com.smb.data.repositories;
 
 import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Mutation;
+import com.apollographql.apollo.api.Query;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.rx2.Rx2Apollo;
 import com.smb.data.errors.DefaultErrorHandler;
@@ -30,6 +31,17 @@ public abstract class AbstractRemoteRepository {
     protected <D extends Mutation.Data, T, V extends Mutation.Variables> Observable<Response<T>> mutation(@Nonnull ApolloClient apollo,
                                                                                                           @Nonnull Mutation<D, T, V> mutation) {
         return Rx2Apollo.from(apollo.mutate(mutation))
+                .compose(RxErrorHandlers.applyHttpErrors(new DefaultErrorHandler()));
+    }
+
+    protected <D extends Query.Data, T, V extends Query.Variables> Observable<Response<T>> query(@Nonnull Query<D, T, V> query) {
+        return Rx2Apollo.from(apollo.query(query))
+                .compose(RxErrorHandlers.applyHttpErrors(new DefaultErrorHandler()));
+    }
+
+    protected <D extends Query.Data, T, V extends Query.Variables> Observable<Response<T>> query(@Nonnull ApolloClient apollo,
+                                                                                                          @Nonnull Query<D, T, V> query) {
+        return Rx2Apollo.from(apollo.query(query))
                 .compose(RxErrorHandlers.applyHttpErrors(new DefaultErrorHandler()));
     }
 }

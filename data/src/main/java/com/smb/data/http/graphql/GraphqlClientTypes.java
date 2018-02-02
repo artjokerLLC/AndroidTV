@@ -5,5 +5,5 @@ package com.smb.data.http.graphql;
  */
 
 public enum GraphqlClientTypes {
-    AUTHENTICATION, DATA
+    AUTHENTICATION, DATA, TEST
 }

@@ -1,4 +1,4 @@
-package com.smb.di.modules;
+package com.smb.data.di.modules;
 
 import com.apollographql.apollo.ApolloClient;
 import com.smb.data.http.graphql.ApolloBuilder;
@@ -16,6 +16,7 @@ import static com.data.BuildConfig.GRAPH_AUTH_DATA_HOST;
 import static com.data.BuildConfig.GRAPH_QL_DATA_HOST;
 import static com.smb.data.http.graphql.GraphqlClientTypes.AUTHENTICATION;
 import static com.smb.data.http.graphql.GraphqlClientTypes.DATA;
+import static com.smb.data.http.graphql.GraphqlClientTypes.TEST;
 
 /**
  * Created by dev on 12.10.17.
@@ -30,7 +31,9 @@ public class ApolloModule {
         HashMap<GraphqlClientTypes, ApolloClient> retrofitApiHashMap = new HashMap<>();
         retrofitApiHashMap.put(AUTHENTICATION, new ApolloBuilder(GRAPH_AUTH_DATA_HOST).create());
         retrofitApiHashMap.put(DATA, new ApolloBuilder(GRAPH_QL_DATA_HOST).create());
-
+        retrofitApiHashMap.put(TEST, new ApolloBuilder(GRAPH_QL_DATA_HOST).create(chain -> chain.proceed(chain.request().newBuilder().header("Authorization", "Bearer testme").build())));
         return retrofitApiHashMap;
     }
+
+
 }
