@@ -4,6 +4,7 @@ package com.smb.presentation.main
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import com.apollographql.apollo.api.Response
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.smb.data.authentication.SocialNetworkProvider

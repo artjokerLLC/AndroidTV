@@ -3,7 +3,6 @@ apply plugin: 'com.apollographql.android'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'io.fabric'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -13,6 +12,7 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode versions.versionCode
         versionName versions.versionName
+        multiDexEnabled true
     }
     signingConfigs {
         release {
@@ -48,14 +48,22 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':data')
-    //ExoPlayer
-    implementation 'com.google.android.exoplayer:exoplayer:2.6.1'
 
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation "com.google.dagger:dagger:$versions.dagger"
     implementation "com.arello-mobile:moxy:$versions.moxy"
     implementation "com.arello-mobile:moxy-android:$versions.moxy"
     kapt "com.arello-mobile:moxy-compiler:$versions.moxy"
-/*    annotationProcessor "com.google.dagger:dagger-compiler:$versions.dagger"
-    implementation "com.google.dagger:dagger:$versions.dagger"*/
+
+    //Libs for Android TV
+    implementation "com.android.support:leanback-v17:$versions.support"
+
+    //Lib for image loading
+    implementation "com.github.bumptech.glide:glide:$versions.glide"
+
+    //ExoPlayer
+    implementation "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
+
+    //Multidex lib
+    implementation "com.android.support:multidex:$versions.multidex"
 }

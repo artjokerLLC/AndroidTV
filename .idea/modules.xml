@@ -8,7 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/graphql-data/graphql-data.iml" filepath="$PROJECT_DIR$/graphql-data/graphql-data.iml" />
       <module fileurl="file://$PROJECT_DIR$/graphql-guest/graphql-guest.iml" filepath="$PROJECT_DIR$/graphql-guest/graphql-guest.iml" />
       <module fileurl="file://$PROJECT_DIR$/presentation/presentation.iml" filepath="$PROJECT_DIR$/presentation/presentation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/smb.iml" filepath="$PROJECT_DIR$/smb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/presentation-tv/presentation-tv.iml" filepath="$PROJECT_DIR$/presentation-tv/presentation-tv.iml" />
     </modules>
   </component>
 </project>

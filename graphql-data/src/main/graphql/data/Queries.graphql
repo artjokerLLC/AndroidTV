@@ -14,3 +14,24 @@ videos{
       }
     }
 }
+
+query ShowsQuery{
+    shows {
+        id
+        title
+        video {
+          id
+          cover
+          title
+          episode
+          description
+          chapter {
+            title
+            media {
+              cover
+              hls
+            }
+          }
+        }
+      }
+}

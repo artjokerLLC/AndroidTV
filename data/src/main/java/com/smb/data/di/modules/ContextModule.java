@@ -1,4 +1,4 @@
-package com.smb.di.modules;
+package com.smb.data.di.modules;
 
 import android.content.Context;
 
