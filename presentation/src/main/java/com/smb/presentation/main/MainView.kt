@@ -4,4 +4,5 @@ import com.arellomobile.mvp.MvpView
 
 interface MainView : MvpView {
     fun onUserLoggedIn()
+    fun onLoginFailed()
 }

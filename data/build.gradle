@@ -35,7 +35,9 @@ android {
     }
 
 }
-
+repositories {
+    mavenCentral()
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
@@ -46,6 +48,9 @@ dependencies {
     implementation("com.twitter.sdk.android:twitter:$versions.twitter@aar") {
         transitive = true
     }
+    implementation 'com.squareup.retrofit2:retrofit:2.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.2.0'
 
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     api project(':core')
@@ -61,6 +66,4 @@ dependencies {
     }
 
 }
-repositories {
-    mavenCentral()
-}
+

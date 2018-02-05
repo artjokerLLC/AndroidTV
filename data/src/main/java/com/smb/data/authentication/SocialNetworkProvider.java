@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
@@ -19,7 +20,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by dev on 25.01.18.
  */
-
+@Singleton
 public class SocialNetworkProvider {
     private Map<SocialNetworkType, SocialNetwork> socialNetworks = new HashMap<>();
     private Context context;

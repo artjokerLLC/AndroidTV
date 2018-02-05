@@ -3330,6 +3330,18 @@
               "deprecationReason": null
             },
             {
+              "name": "is_abused",
+              "description": "Return true if viewer abuse comment",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "video",
               "description": "Related video",
               "args": [],
@@ -3445,13 +3457,9 @@
               "description": "Viewer email",
               "args": [],
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -4933,6 +4941,39 @@
                 {
                   "name": "chapter_id",
                   "description": "Chapter ID",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "abuseType",
+                  "description": "Abuse type",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "abuseComment",
+              "description": "Abuse comment",
+              "args": [
+                {
+                  "name": "comment_id",
+                  "description": "Comment ID",
                   "type": {
                     "kind": "SCALAR",
                     "name": "ID",
