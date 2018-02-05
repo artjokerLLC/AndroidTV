@@ -17,4 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LOGIN BY TWITTER" />
+    <Button
+        android:id="@+id/login_by_instagram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN BY INSTAGRAM" />
 </LinearLayout>

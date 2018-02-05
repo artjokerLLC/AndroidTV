@@ -23,6 +23,13 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="6c7e28daa57ff8ba3be6591e57e9e62b8a7ac754" />
+        <meta-data
+            android:name="com.instagram.instagramapi.InstagramAppClientId"
+            android:value="6ae1dc70ed18453498b5fcbb3073ee17" />
+
+        <meta-data
+            android:name="com.instagram.instagramapi.InstagramAppRedirectURL"
+            android:value="https://example.com/" />
     </application>
 
 </manifest>

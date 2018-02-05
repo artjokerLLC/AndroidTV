@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.smb.data.authentication.networks.Facebook;
 import com.smb.data.authentication.networks.SocialNetwork;
+import com.smb.data.authentication.networks.instagram.Instagram;
 import com.smb.data.authentication.networks.twitter.Twitter;
 
 /**
@@ -20,6 +21,8 @@ public class SocialNetworkFactory {
                 return new Twitter(context);
             case FACEBOOK:
                 return new Facebook(context);
+            case INSTAGRAM:
+                return new Instagram(context);
             default:
                 throw new IllegalArgumentException("Invalid social network type " + type.name() + " id : " + type.code());
         }

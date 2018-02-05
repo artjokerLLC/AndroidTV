@@ -12,6 +12,7 @@ import com.smb.data.authentication.SocialNetworkType
 import com.smb.data.repositories.api.LocalUserRepository
 import com.smb.data.repositories.api.RemoteUserRepository
 import com.smb.di.DependencyContainer
+import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 @InjectViewState
@@ -33,13 +34,17 @@ class MainPresenter : MvpPresenter<MainView>() {
     fun loginBy(networkType: SocialNetworkType, activity: Activity) {
         socialNetworkProvider.loginBy(networkType, activity)
                 .flatMap { socialData -> remoteUserRepository.getUser(socialData) }
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ user ->
                     localUserRepository.put(user)
                     viewState.onUserLoggedIn()
+                }, { error ->
+                    error.printStackTrace()
+                    viewState.onLoginFailed()
                 })
     }
 
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         socialNetworkProvider.onActivityResult(requestCode, resultCode, data)
     }
 }
