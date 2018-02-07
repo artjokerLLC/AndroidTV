@@ -27,7 +27,6 @@ import com.smb.data.authentication.networks.instagram.objects.IGUser;
 import com.smb.data.authentication.networks.instagram.utils.InstagramKitLoginScope;
 import com.smb.data.authentication.networks.instagram.utils.Utils;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -60,27 +59,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+@SuppressWarnings("all")
 public class InstagramEngine {
 
-    public static String TYPE = "type";
-    public static String SCOPE = "scope";
     final public static int TYPE_LOGOUT = 2;
     final public static int TYPE_LOGIN = 1;
-    public static String IS_LOGIN_BUTTON = "insta_login_button";
-
     final public static int REQUEST_CODE_LOGIN = 3111;
     final public static int REQUEST_CODE_LOGOUT = 3112;
-
+    public static String TYPE = "type";
+    public static String SCOPE = "scope";
+    public static String IS_LOGIN_BUTTON = "insta_login_button";
+    private static InstagramEngine instance = null;
+    private static Context mContext;
     private String appClientID;
     private String appRedirectURL;
     private IGSession session;
-
-    private static InstagramEngine instance = null;
     private Retrofit retrofit;
     private InstagramAPIService instagramAPIService;
     private InstagramLoginCallbackListener instagramLoginButtonCallback;
-
-    private static Context mContext;
     private SharedPreferences sharedPref;
 
     private InstagramEngine() {
@@ -960,6 +956,12 @@ public class InstagramEngine {
 
     //=======================================================================================================================
 
+    /**
+     * This method is used internal for handling login responses.
+     */
+    public InstagramLoginCallbackListener getInstagramLoginButtonCallback() {
+        return instagramLoginButtonCallback;
+    }
 
     /**
      * This method is used internal for handling login responses.
@@ -968,13 +970,6 @@ public class InstagramEngine {
      */
     public void setInstagramLoginButtonCallback(InstagramLoginCallbackListener instagramLoginButtonCallback) {
         this.instagramLoginButtonCallback = instagramLoginButtonCallback;
-    }
-
-    /**
-     * This method is used internal for handling login responses.
-     */
-    public InstagramLoginCallbackListener getInstagramLoginButtonCallback() {
-        return instagramLoginButtonCallback;
     }
 
 
