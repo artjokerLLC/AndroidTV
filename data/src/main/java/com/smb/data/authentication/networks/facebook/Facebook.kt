@@ -3,7 +3,6 @@ package com.smb.data.authentication.networks
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import com.facebook.FacebookSdk
 import com.facebook.GraphResponse
 import com.facebook.login.LoginResult
 import com.smb.data.authentication.SocialNetworkType.FACEBOOK
@@ -19,13 +18,7 @@ import javax.inject.Inject
  */
 
 class Facebook @Inject
-constructor(context: Context) : SocialNetwork {
-
-    init {
-        if (!FacebookSdk.isInitialized()) {
-            FacebookSdk.sdkInitialize(context)
-        }
-    }
+constructor(val context: Context) : SocialNetwork {
 
     override fun login(activity: Activity): Observable<SocialLoginResult> {
         val rxFacebook = RxFacebook.create()

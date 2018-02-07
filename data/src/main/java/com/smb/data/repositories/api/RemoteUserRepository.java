@@ -13,4 +13,5 @@ import io.reactivex.Observable;
 
 public interface RemoteUserRepository {
     Observable<User> getUser(@NotNull SocialLoginResult socialData);
+
 }

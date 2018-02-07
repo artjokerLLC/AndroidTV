@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
+apply plugin: 'project-report'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -13,6 +14,7 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode versions.versionCode
         versionName versions.versionName
+        multiDexEnabled true
     }
     signingConfigs {
         release {
@@ -38,6 +40,9 @@ android {
     apollo {
         schemaFilePath
     }
+    configurations.all {
+        resolutionStrategy.force "com.android.support:support-v4:$versions.support"
+    }
 }
 
 dependencies {
@@ -56,6 +61,7 @@ dependencies {
     implementation "com.arello-mobile:moxy:$versions.moxy"
     implementation "com.arello-mobile:moxy-android:$versions.moxy"
     kapt "com.arello-mobile:moxy-compiler:$versions.moxy"
-/*    annotationProcessor "com.google.dagger:dagger-compiler:$versions.dagger"
-    implementation "com.google.dagger:dagger:$versions.dagger"*/
+    //Multidex lib
+    implementation "com.android.support:multidex:$versions.multidex"
+
 }

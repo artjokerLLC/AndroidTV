@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.apollographql.android'
 apply plugin: 'io.fabric'
+apply plugin: 'project-report'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -47,10 +48,13 @@ dependencies {
     implementation "com.orhanobut:hawk:$versions.hawk"
     implementation("com.twitter.sdk.android:twitter:$versions.twitter@aar") {
         transitive = true
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+        exclude group: 'com.android.support', module: 'appcompat-v7'
     }
-    implementation 'com.squareup.retrofit2:retrofit:2.0.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.0.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.retrofitLogging"
+    implementation "com.google.android.gms:play-services-auth:$versions.playServices"
 
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     api project(':core')
