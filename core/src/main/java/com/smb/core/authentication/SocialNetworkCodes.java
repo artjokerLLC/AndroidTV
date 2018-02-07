@@ -1,4 +1,4 @@
-package com.smb.data.authentication;
+package com.smb.core.authentication;
 
 /**
  * Created by dev on 25.01.18.

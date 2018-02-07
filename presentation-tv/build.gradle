@@ -3,6 +3,7 @@ apply plugin: 'com.apollographql.android'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'project-report'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -37,6 +38,9 @@ android {
     }
     apollo {
         schemaFilePath
+    }
+    configurations.all {
+        resolutionStrategy.force "com.android.support:support-v4:$versions.support"
     }
 }
 

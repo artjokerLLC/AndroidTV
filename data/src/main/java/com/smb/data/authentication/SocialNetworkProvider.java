@@ -40,7 +40,7 @@ public class SocialNetworkProvider {
     private SocialNetwork getSocialNetwork(SocialNetworkType type) {
         SocialNetwork socialNetwork = socialNetworks.get(type);
         if (socialNetwork == null) {
-            socialNetwork = SocialNetworkFactory.get(context, type);
+            socialNetwork = SocialNetworkFactory.INSTANCE.get(context, type);
             socialNetworks.put(type, socialNetwork);
         }
         return socialNetwork;

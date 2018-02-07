@@ -27,6 +27,7 @@ class MainActivity : MvpActivity(), MainView {
         login_by_facebook.setOnClickListener { _ -> mMainPresenter.loginBy(FACEBOOK, this) }
         login_by_twitter.setOnClickListener { _ -> mMainPresenter.loginBy(TWITTER, this) }
         login_by_instagram.setOnClickListener { _ -> mMainPresenter.loginBy(INSTAGRAM, this) }
+        login_by_google.setOnClickListener { _ -> mMainPresenter.loginBy(GOOGLE, this) }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
