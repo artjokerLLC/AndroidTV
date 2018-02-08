@@ -53,8 +53,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':data')
-    //ExoPlayer
-    implementation 'com.google.android.exoplayer:exoplayer:2.6.1'
+
 
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation "com.google.dagger:dagger:$versions.dagger"

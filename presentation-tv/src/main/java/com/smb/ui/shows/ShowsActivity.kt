@@ -12,15 +12,16 @@
  * the License.
  */
 
-package com.smb
+package com.smb.ui.shows
 
 import android.app.Activity
 import android.os.Bundle
+import com.smb.R
 
 /**
- * Loads [MainFragment].
+ * Loads [ShowsFragment].
  */
-class MainActivity : Activity() {
+class ShowsActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

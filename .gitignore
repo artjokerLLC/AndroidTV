@@ -9,3 +9,4 @@
 .externalNativeBuild
 Будет удалено .idea/
 libs/
+/.idea/modules.xml

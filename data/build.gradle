@@ -69,5 +69,7 @@ dependencies {
         transitive = true
     }
 
+    //ExoPlayer
+    api "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
 }
 

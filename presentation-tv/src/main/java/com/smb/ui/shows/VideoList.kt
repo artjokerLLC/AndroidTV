@@ -12,9 +12,11 @@
  * the License.
  */
 
-package com.smb
+package com.smb.ui.shows
 
-object MovieList {
+import com.smb.data.models.Video
+
+object VideoList {
     val MOVIE_CATEGORY = arrayOf(
             "Category Zero",
             "Category One",
@@ -23,12 +25,12 @@ object MovieList {
             "Category Four",
             "Category Five")
 
-    val list: List<Movie> by lazy {
+    val LIST: List<Video> by lazy {
         setupMovies()
     }
     private var count: Long = 0
 
-    private fun setupMovies(): List<Movie> {
+    private fun setupMovies(): List<Video> {
         val title = arrayOf(
                 "Zeitgeist 2010_ Year in Review",
                 "Google Demo Slam_ 20ft Search",
@@ -67,7 +69,7 @@ object MovieList {
                 "http://commondatastorage.googleapis.com/android-tv/Sample%20videos/April%20Fool's%202013/Introducing%20Google%20Fiber%20to%20the%20Pole/card.jpg",
                 "http://commondatastorage.googleapis.com/android-tv/Sample%20videos/April%20Fool's%202013/Introducing%20Google%20Nose/card.jpg")
 
-        val list = arrayListOf<Movie>()
+        val list = arrayListOf<Video>()
         for (index in title.indices) {
             list.add(
                     buildMovieInfo(
@@ -78,6 +80,7 @@ object MovieList {
                             videoUrl[index],
                             cardImageUrl[index],
                             bgImageUrl[index]))
+
         }
 
         return list
@@ -85,8 +88,8 @@ object MovieList {
 
     private fun buildMovieInfo(category: String, title: String,
                                description: String, studio: String, videoUrl: String, cardImageUrl: String,
-                               backgroundImageUrl: String): Movie {
-        val movie = Movie()
+                               backgroundImageUrl: String): Video {
+        val movie = Video()
         movie.id = count++
         movie.title = title
         movie.description = description

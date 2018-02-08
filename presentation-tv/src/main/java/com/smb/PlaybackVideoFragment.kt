@@ -18,6 +18,7 @@ import android.os.Bundle
 import android.support.v17.leanback.app.VideoSupportFragment
 import android.support.v17.leanback.app.VideoSupportFragmentGlueHost
 import android.support.v17.leanback.media.MediaPlayerGlue
+import com.smb.data.models.Video
 
 /** Handles video playback with media controls. */
 class PlaybackVideoFragment : VideoSupportFragment() {
@@ -28,7 +29,7 @@ class PlaybackVideoFragment : VideoSupportFragment() {
         super.onCreate(savedInstanceState)
 
         val (_, title, description, _, _, videoUrl) =
-                activity?.intent?.getSerializableExtra(DetailsActivity.MOVIE) as Movie
+                activity?.intent?.getSerializableExtra(DetailsActivity.MOVIE) as Video
 
         val glueHost = VideoSupportFragmentGlueHost(this@PlaybackVideoFragment)
 //        mTransportControlGlue = MediaPlayerGlue(activity)

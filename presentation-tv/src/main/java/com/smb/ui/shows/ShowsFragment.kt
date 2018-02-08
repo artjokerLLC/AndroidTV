@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.smb
+package com.smb.ui.shows
 
 import android.content.Intent
 import android.graphics.Color
@@ -22,7 +22,6 @@ import android.os.Handler
 import android.support.v17.leanback.app.BackgroundManager
 import android.support.v17.leanback.app.BrowseFragment
 import android.support.v17.leanback.widget.*
-import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.content.ContextCompat
 import android.util.DisplayMetrics
 import android.util.Log
@@ -35,8 +34,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
+import com.smb.BrowseErrorActivity
+import com.smb.R
+import com.smb.data.models.Video
 import com.smb.data.repositories.tv.TestShowsRepository
 import com.smb.di.DependencyContainer
+import com.smb.ui.chapters.ChaptersActivity
 import data.ShowsQuery
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -46,7 +49,7 @@ import javax.inject.Inject
 /**
  * Loads a grid of cards with movies to browse.
  */
-class MainFragment : BrowseFragment() {
+class ShowsFragment : BrowseFragment() {
 
     private val mHandler = Handler()
     private lateinit var mRowsAdapter: ArrayObjectAdapter
@@ -63,14 +66,6 @@ class MainFragment : BrowseFragment() {
         Log.i(TAG, "onCreate")
         super.onActivityCreated(savedInstanceState)
         getTestShows()
-
-//        prepareBackgroundManager()
-//
-//        setupUIElements()
-//
-//        loadRows()
-//
-//        setupEventListeners()
     }
 
     private fun getTestShows() {
@@ -91,19 +86,19 @@ class MainFragment : BrowseFragment() {
     }
 
     private fun loadRows(shows: List<ShowsQuery.Show>?) {
-        val list = MovieList.list
+        val list = VideoList.LIST
 
         mRowsAdapter = ArrayObjectAdapter(ListRowPresenter())
-        val cardPresenter = CardPresenter()
+        val cardPresenter = ShowsCardPresenter()
 
         for (i in 0..(shows?.size!! - 1)) {
             if (i != 0) {
                 Collections.shuffle(list)
             }
             val listRowAdapter = ArrayObjectAdapter(cardPresenter)
-            shows[i].video().let { it?.forEach { video ->  listRowAdapter.add(Movie(video))} }
+            shows[i].video().let { it?.forEach { video -> listRowAdapter.add(Video(video)) } }
 //            for (j in 0 until NUM_COLS) {
-//                listRowAdapter.add(list[j % 5])
+//                listRowAdapter.add(LIST[j % 5])
 //            }
             val header = HeaderItem(i.toLong(), shows[i].title())
             mRowsAdapter.add(ListRow(header, listRowAdapter))
@@ -149,10 +144,10 @@ class MainFragment : BrowseFragment() {
     }
 
     private fun loadRows() {
-        val list = MovieList.list
+        val list = VideoList.LIST
 
         mRowsAdapter = ArrayObjectAdapter(ListRowPresenter())
-        val cardPresenter = CardPresenter()
+        val cardPresenter = ShowsCardPresenter()
 
         for (i in 0 until NUM_ROWS) {
             if (i != 0) {
@@ -162,7 +157,7 @@ class MainFragment : BrowseFragment() {
             for (j in 0 until NUM_COLS) {
                 listRowAdapter.add(list[j % 5])
             }
-            val header = HeaderItem(i.toLong(), MovieList.MOVIE_CATEGORY[i])
+            val header = HeaderItem(i.toLong(), VideoList.MOVIE_CATEGORY[i])
             mRowsAdapter.add(ListRow(header, listRowAdapter))
         }
 
@@ -192,16 +187,10 @@ class MainFragment : BrowseFragment() {
         override fun onItemClicked(itemViewHolder: Presenter.ViewHolder, item: Any,
                                    rowViewHolder: RowPresenter.ViewHolder, row: Row) {
 
-            if (item is Movie) {
+            if (item is Video) {
                 Log.d(TAG, "Item: " + item.toString())
-                val intent = Intent(activity, DetailsActivity::class.java)
-                intent.putExtra(DetailsActivity.MOVIE, item)
-
-                val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        activity,
-                        (itemViewHolder.view as ImageCardView).mainImageView,
-                        DetailsActivity.SHARED_ELEMENT_NAME).toBundle()
-                activity.startActivity(intent, bundle)
+                val chaptersIntent = ChaptersActivity.getIntent(activity, item.title, item.cardImageUrl, item.chapters)
+                startActivity(chaptersIntent)
             } else if (item is String) {
                 if (item.contains(getString(R.string.error_fragment))) {
                     val intent = Intent(activity, BrowseErrorActivity::class.java)
@@ -216,7 +205,7 @@ class MainFragment : BrowseFragment() {
     private inner class ItemViewSelectedListener : OnItemViewSelectedListener {
         override fun onItemSelected(itemViewHolder: Presenter.ViewHolder?, item: Any?,
                                     rowViewHolder: RowPresenter.ViewHolder, row: Row) {
-            if (item is Movie) {
+            if (item is Video) {
                 mBackgroundUri = item.backgroundImageUrl
                 startBackgroundTimer()
             }
@@ -273,7 +262,7 @@ class MainFragment : BrowseFragment() {
     }
 
     companion object {
-        private val TAG = "MainFragment"
+        private val TAG = "ShowsFragment"
 
         private val BACKGROUND_UPDATE_DELAY = 300
         private val GRID_ITEM_WIDTH = 200
