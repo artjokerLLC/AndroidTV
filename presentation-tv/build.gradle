@@ -65,9 +65,9 @@ dependencies {
     //Lib for image loading
     implementation "com.github.bumptech.glide:glide:$versions.glide"
 
-    //ExoPlayer
-    implementation "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
-
     //Multidex lib
     implementation "com.android.support:multidex:$versions.multidex"
+
+    api "com.google.android.exoplayer:extension-leanback:$versions.exoplayer"
+
 }

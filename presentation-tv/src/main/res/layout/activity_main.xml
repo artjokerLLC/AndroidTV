@@ -2,9 +2,9 @@
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_browse_fragment"
-    android:name="com.smb.MainFragment"
+    android:name="com.smb.ui.shows.ShowsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.smb.MainActivity"
+    tools:context="com.smb.ui.shows.ShowsActivity"
     tools:deviceIds="tv"
     tools:ignore="MergeRootFrame" />

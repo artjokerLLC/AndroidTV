@@ -3,10 +3,10 @@ package com.smb.di.components;
 import android.content.Context;
 
 import com.apollographql.apollo.ApolloClient;
-import com.smb.MainFragment;
 import com.smb.data.di.modules.ApolloModule;
 import com.smb.data.di.modules.ContextModule;
 import com.smb.data.http.graphql.GraphqlClientTypes;
+import com.smb.ui.shows.ShowsFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -27,5 +27,5 @@ public interface AppComponent {
 
     Map<GraphqlClientTypes, ApolloClient> getApollo();
 
-    void inject(@NotNull MainFragment mainFragment);
+    void inject(@NotNull ShowsFragment showsFragment);
 }

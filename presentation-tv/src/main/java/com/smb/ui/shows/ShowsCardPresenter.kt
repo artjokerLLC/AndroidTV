@@ -12,8 +12,9 @@
  * the License.
  */
 
-package com.smb;
+package com.smb.ui.shows;
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.support.v17.leanback.widget.ImageCardView
 import android.support.v17.leanback.widget.Presenter
@@ -22,24 +23,27 @@ import android.util.Log
 import android.view.ViewGroup
 
 import com.bumptech.glide.Glide
+import com.smb.R
+import com.smb.data.models.Video
 import kotlin.properties.Delegates
 
 /**
- * A CardPresenter is used to generate Views and bind Objects to them on demand.
+ * A ShowsCardPresenter is used to generate Views and bind Objects to them on demand.
  * It contains an ImageCardView.
  */
-class CardPresenter : Presenter() {
+class ShowsCardPresenter : Presenter() {
     private var mDefaultCardImage: Drawable? = null
     private var sSelectedBackgroundColor: Int by Delegates.notNull()
     private var sDefaultBackgroundColor: Int by Delegates.notNull()
+    private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup): Presenter.ViewHolder {
         Log.d(TAG, "onCreateViewHolder")
-
-        sDefaultBackgroundColor = ContextCompat.getColor(parent.context, R.color.default_background)
+        context = parent.context
+        sDefaultBackgroundColor = ContextCompat.getColor(context, R.color.default_background)
         sSelectedBackgroundColor =
-                ContextCompat.getColor(parent.context, R.color.selected_background)
-        mDefaultCardImage = ContextCompat.getDrawable(parent.context, R.drawable.movie)
+                ContextCompat.getColor(context, R.color.selected_background)
+        mDefaultCardImage = ContextCompat.getDrawable(context, R.drawable.movie)
 
         val cardView = object : ImageCardView(parent.context) {
             override fun setSelected(selected: Boolean) {
@@ -55,20 +59,24 @@ class CardPresenter : Presenter() {
     }
 
     override fun onBindViewHolder(viewHolder: Presenter.ViewHolder, item: Any) {
-        val movie = item as Movie
+        val video = item as Video
         val cardView = viewHolder.view as ImageCardView
 
         Log.d(TAG, "onBindViewHolder")
-        if (movie.cardImageUrl != null) {
-            cardView.titleText = movie.title
-            cardView.contentText = movie.studio
+        if (video.cardImageUrl != null) {
+            cardView.titleText = video.title
+            initChaptersCount(cardView, video)
             cardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT)
             Glide.with(viewHolder.view.context)
-                    .load(movie.cardImageUrl)
+                    .load(video.cardImageUrl)
                     .centerCrop()
                     .error(mDefaultCardImage)
                     .into(cardView.mainImageView)
         }
+    }
+
+    private fun initChaptersCount(cardView: ImageCardView, video: Video) {
+        cardView.contentText = context.resources.getQuantityString(R.plurals.chapters_plurals, video.chapters.size, video.chapters.size)
     }
 
     override fun onUnbindViewHolder(viewHolder: Presenter.ViewHolder) {
@@ -88,7 +96,7 @@ class CardPresenter : Presenter() {
     }
 
     companion object {
-        private val TAG = "CardPresenter"
+        private val TAG = "ShowsCardPresenter"
 
         private val CARD_WIDTH = 313
         private val CARD_HEIGHT = 176

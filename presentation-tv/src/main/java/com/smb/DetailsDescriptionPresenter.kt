@@ -15,13 +15,14 @@
 package com.smb
 
 import android.support.v17.leanback.widget.AbstractDetailsDescriptionPresenter
+import com.smb.data.models.Video
 
 class DetailsDescriptionPresenter : AbstractDetailsDescriptionPresenter() {
 
     override fun onBindDescription(
             viewHolder: AbstractDetailsDescriptionPresenter.ViewHolder,
             item: Any) {
-        val movie = item as Movie
+        val movie = item as Video
 
         viewHolder.title.text = movie.title
         viewHolder.subtitle.text = movie.studio
