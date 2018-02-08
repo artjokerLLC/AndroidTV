@@ -4170,6 +4170,18 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "progress",
+              "description": "Second where viewer stop",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -5171,6 +5183,16 @@
                     "ofType": null
                   },
                   "defaultValue": null
+                },
+                {
+                  "name": "hash",
+                  "description": "Security hash",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
                 }
               ],
               "type": {
@@ -5580,29 +5602,6 @@
               "deprecationReason": null
             },
             {
-              "name": "unlinkSocial",
-              "description": "Unlinked viewer to social network",
-              "args": [
-                {
-                  "name": "socialNetwork",
-                  "description": "Social network type",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "settings",
               "description": "Update settings",
               "args": [
@@ -5714,6 +5713,49 @@
               "deprecationReason": null
             },
             {
+              "name": "skip",
+              "description": "Mutation for skip carat",
+              "args": [
+                {
+                  "name": "chapter_id",
+                  "description": "Chapter ID",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "carat_id",
+                  "description": "Carat ID",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "hash",
+                  "description": "Security hash",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "subInfluence",
               "description": "A mutation",
               "args": [
@@ -5779,6 +5821,29 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "unlinkSocial",
+              "description": "Unlinked viewer to social network",
+              "args": [
+                {
+                  "name": "socialNetwork",
+                  "description": "Social network type",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
                     "ofType": null
                   },
                   "defaultValue": null

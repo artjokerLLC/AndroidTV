@@ -2,9 +2,6 @@ package com.smb.data.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.smb.data.mappers.UserMapper;
-
-import guest.fragment.UserInformation;
 
 
 public class User {
@@ -27,9 +24,6 @@ public class User {
     @Expose
     private Object gender;
 
-    public static User create(UserInformation information) {
-        return new UserMapper(information).map();
-    }
 
     public String getId() {
         return id;
