@@ -2,28 +2,47 @@ package com.smb.presentation.home
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import com.arellomobile.mvp.MvpActivity
+import android.support.v7.app.AlertDialog
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.smb.R
+import com.smb.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : MvpActivity(), HomeView {
+class HomeActivity : BaseActivity(), HomeView {
+
     @InjectPresenter
     lateinit var mHomePresenter: HomePresenter
 
     @ProvidePresenter()
     fun providePresenter() = HomePresenter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+    var dialog: AlertDialog? = null
+
+    override val viewId: Int
+        get() = R.layout.activity_home
+
+    override fun onPresenterReady() {
+        text.text = mHomePresenter.getUser()
+        video_player.setOnClickListener({ _ -> mHomePresenter.loadVideo(this) })
     }
 
-    override fun onStart() {
-        super.onStart()
-        text.text = mHomePresenter.getUser()
+    override fun hideProgress() {
+        dialog?.dismiss()
+        dialog = null
+    }
+
+    override fun showProgress() {
+        dialog?.dismiss()
+        dialog = AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setMessage("Loading")
+                .create()
+        dialog?.show()
+    }
+
+    override fun startNewActivity(intent: Intent) {
+        startActivity(intent)
     }
 
     companion object {

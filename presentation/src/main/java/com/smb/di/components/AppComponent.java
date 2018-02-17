@@ -9,6 +9,7 @@ import com.smb.data.http.graphql.GraphqlClientTypes;
 import com.smb.di.modules.RepositoryModule;
 import com.smb.presentation.home.HomePresenter;
 import com.smb.presentation.main.MainPresenter;
+import com.smb.presentation.player.PlayerPresenter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -32,4 +33,6 @@ public interface AppComponent {
     void inject(@NotNull MainPresenter mainPresenter);
 
     void inject(@NotNull HomePresenter homePresenter);
+
+    void inject(@NotNull PlayerPresenter playerPresenter);
 }

@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ExoFullScreenTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowEnterAnimation">@anim/enter_full_screen</item>
+        <item name="android:windowExitAnimation">@anim/exit_full_screen</item>
+    </style>
 </resources>
