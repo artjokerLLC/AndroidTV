@@ -4,7 +4,7 @@ package com.smb.presentation.main
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import com.apollographql.apollo.api.Response
+import android.text.TextUtils
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.smb.data.authentication.SocialNetworkProvider
@@ -46,5 +46,12 @@ class MainPresenter : MvpPresenter<MainView>() {
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         socialNetworkProvider.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun checkAuthorization() {
+        val user = localUserRepository.get()
+        if (!TextUtils.isEmpty(user?.token)) {
+            viewState.onUserLoggedIn()
+        }
     }
 }

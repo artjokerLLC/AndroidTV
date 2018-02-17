@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/exo_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/play" />
+
+    <ImageView
+        android:id="@+id/exo_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/pause" />
+
+    <TextView
+        android:id="@+id/time_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/exo_progress"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        android:text="00:00"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/time_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/exo_progress"
+        android:layout_margin="10dp"
+        android:layout_toStartOf="@+id/exo_fullscreen_mode"
+
+        android:text="00:00"
+        android:textColor="@android:color/white" />
+
+    <com.google.android.exoplayer2.ui.DefaultTimeBar
+        android:id="@+id/exo_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/exo_fullscreen_mode" />
+
+    <ImageView
+        android:id="@+id/exo_fullscreen_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:padding="10dp"
+        android:src="@drawable/open_full_screen" />
+
+
+</RelativeLayout>

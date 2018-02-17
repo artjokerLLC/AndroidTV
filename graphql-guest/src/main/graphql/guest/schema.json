@@ -1680,8 +1680,8 @@
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "AccountType",
+                  "kind": "SCALAR",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -2456,8 +2456,8 @@
               "deprecationReason": null
             },
             {
-              "name": "carat_given",
-              "description": "Count of given carats",
+              "name": "carats_available",
+              "description": "Count of available carats",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2469,7 +2469,7 @@
             },
             {
               "name": "carat_earned",
-              "description": "Count of carats earned by viewers (fake)",
+              "description": "Count of carats earned by viewers",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -2860,6 +2860,46 @@
             {
               "name": "alarm",
               "description": "Alarm time in minutes",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "prizes",
+              "description": "Alarm time in minutes",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PrizeType",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "carats_earned",
+              "description": "Count of carats earned by viewers",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "carats_available",
+              "description": "Count of available carats",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3591,6 +3631,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "timeleft",
+              "description": "Seconds left to MH start",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
                   "ofType": null
                 }
               },

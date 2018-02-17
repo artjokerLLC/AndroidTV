@@ -3,17 +3,20 @@ package com.smb.presentation.main
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.widget.Toast
-import com.arellomobile.mvp.MvpActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.smb.R
+import com.smb.base.BaseActivity
 import com.smb.data.authentication.SocialNetworkType.*
 import com.smb.presentation.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : MvpActivity(), MainView {
+class MainActivity : BaseActivity(), MainView {
+
+
+    override val viewId: Int
+        get() = R.layout.activity_main
 
     @InjectPresenter
     lateinit var mMainPresenter: MainPresenter
@@ -21,9 +24,8 @@ class MainActivity : MvpActivity(), MainView {
     @ProvidePresenter()
     fun providePresenter() = MainPresenter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun onPresenterReady() {
+        mMainPresenter.checkAuthorization()
         login_by_facebook.setOnClickListener { _ -> mMainPresenter.loginBy(FACEBOOK, this) }
         login_by_twitter.setOnClickListener { _ -> mMainPresenter.loginBy(TWITTER, this) }
         login_by_instagram.setOnClickListener { _ -> mMainPresenter.loginBy(INSTAGRAM, this) }
