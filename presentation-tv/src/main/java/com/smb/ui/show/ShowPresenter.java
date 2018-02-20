@@ -3,8 +3,8 @@ package com.smb.ui.show;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.smb.data.RxTransformers;
-import com.smb.data.mappers.ShowMapper;
-import com.smb.data.repositories.tv.ShowRepository;
+import com.smb.data.mappers.instances.ShowMapper;
+import com.smb.data.repositories.shows.ShowRepository;
 import com.smb.di.DependencyContainer;
 
 import javax.inject.Inject;

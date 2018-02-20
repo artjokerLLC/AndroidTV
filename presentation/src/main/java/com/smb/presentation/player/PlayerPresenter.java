@@ -2,8 +2,8 @@ package com.smb.presentation.player;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.smb.data.repositories.api.OrientationRepository;
-import com.smb.data.repositories.tv.TestShowsRepository;
+import com.smb.core.repositories.OrientationRepository;
+import com.smb.data.repositories.shows.TestShowsRepository;
 import com.smb.di.DependencyContainer;
 import com.smb.player.SmbExoPlayer;
 

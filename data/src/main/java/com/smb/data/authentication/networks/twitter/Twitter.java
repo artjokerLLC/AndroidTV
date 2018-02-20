@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.smb.core.models.SocialLoginResult;
 import com.smb.data.authentication.networks.SocialNetwork;
-import com.smb.data.models.SocialLoginResult;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;

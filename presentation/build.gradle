@@ -48,6 +48,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$versions.support"
+    implementation "com.android.support:design:$versions.support"
     implementation "com.android.support.constraint:constraint-layout:$versions.constraintLayout"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -57,8 +58,10 @@ dependencies {
     implementation "com.google.dagger:dagger:$versions.dagger"
     implementation "com.arello-mobile:moxy:$versions.moxy"
     implementation "com.arello-mobile:moxy-android:$versions.moxy"
+    implementation "com.arello-mobile:moxy-app-compat:$versions.moxy"
     kapt "com.arello-mobile:moxy-compiler:$versions.moxy"
     //Multidex lib
     implementation "com.android.support:multidex:$versions.multidex"
-    compile "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
+    implementation 'ru.terrakok.cicerone:cicerone:3.0.0'
 }

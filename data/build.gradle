@@ -63,7 +63,6 @@ dependencies {
     api "com.apollographql.apollo:apollo-runtime:$versions.apolloPlugin"
     api "com.apollographql.apollo:apollo-rx2-support:$versions.apolloPlugin"
     api "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
-    api group: 'com.google.code.gson', name: 'gson', version: "$versions.gsonVersion"
     api "com.tspoon.traceur:traceur:$versions.traucer"
     api('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
         transitive = true

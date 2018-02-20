@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">SMB</string>
     <string name="facebook_app_id">145551752718075</string>
+    <string name="home">Home</string>
+    <string name="magic_hours">Magic hours</string>
+    <string name="rewards">Rewards</string>
+    <string name="influencers">Influencers</string>
+    <string name="shows">Shows</string>
 </resources>

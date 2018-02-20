@@ -11,9 +11,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.smb.core.models.SocialLoginResult;
 import com.smb.data.RxBus;
 import com.smb.data.authentication.networks.SocialNetwork;
-import com.smb.data.models.SocialLoginResult;
 
 import io.reactivex.Observable;
 

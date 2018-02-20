@@ -1,11 +1,11 @@
 package com.smb.di.modules;
 
-import com.smb.data.repositories.api.LocalUserRepository;
-import com.smb.data.repositories.api.OrientationRepository;
-import com.smb.data.repositories.api.RemoteUserRepository;
-import com.smb.data.repositories.implementation.orientation.DeviceOrientationRepository;
-import com.smb.data.repositories.implementation.user.GraphRemoteUserRepository;
-import com.smb.data.repositories.implementation.user.SecureLocalUserRepository;
+import com.smb.core.repositories.LocalUserRepository;
+import com.smb.core.repositories.OrientationRepository;
+import com.smb.core.repositories.RemoteUserRepository;
+import com.smb.data.repositories.orientation.DeviceOrientationRepository;
+import com.smb.data.repositories.user.GraphRemoteUserRepository;
+import com.smb.data.repositories.user.SecureLocalUserRepository;
 
 import dagger.Binds;
 import dagger.Module;

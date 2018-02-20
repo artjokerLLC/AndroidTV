@@ -5,6 +5,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api "io.reactivex.rxjava2:rxjava:$versions.rxJava"
     api "org.jetbrains.kotlin:kotlin-stdlib-jre8:$versions.kotlin"
+    api group: 'com.google.code.gson', name: 'gson', version: "$versions.gsonVersion"
+
 }
 
 sourceCompatibility = "1.8"

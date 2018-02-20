@@ -1,6 +1,7 @@
 package com.smb.data.mappers
 
 import com.smb.core.mappers.Transformer
+import com.smb.core.models.User
 import com.smb.data.models.*
 import data.ShowQuery
 import data.ShowsQuery

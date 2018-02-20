@@ -3,8 +3,10 @@
 
     <application>
         <activity android:name="com.smb.blank.BlankActivity" />
-        <activity android:name="com.smb.presentation.home.blank.HomeActivity" />
+        <activity android:name="com.smb.presentation.test.blank.HomeActivity" />
         <activity android:name="com.smb.presentation.player.blank.PlayerActivity" />
+        <activity android:name="com.smb.presentation.main.blank.NavigationActivity" />
+        <activity android:name="com.smb.presentation.home.activity.blank.HomeActivity" />
     </application>
 
 </manifest>

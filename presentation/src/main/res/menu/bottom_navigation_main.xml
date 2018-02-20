@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/home_selector"
+        android:title="@string/home"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_magic_hours"
+        android:icon="@drawable/home_selector"
+        android:title="@string/magic_hours"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_rewards"
+        android:icon="@drawable/home_selector"
+        android:title="@string/rewards"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_influencers"
+        android:icon="@drawable/home_selector"
+        android:title="@string/influencers"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_shows"
+        android:icon="@drawable/home_selector"
+        android:title="@string/shows"
+        app:showAsAction="always|withText" />
+</menu>

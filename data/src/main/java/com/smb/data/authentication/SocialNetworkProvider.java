@@ -5,8 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smb.core.models.SocialLoginResult;
 import com.smb.data.authentication.networks.SocialNetwork;
-import com.smb.data.models.SocialLoginResult;
 
 import java.util.HashMap;
 import java.util.Map;
