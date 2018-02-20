@@ -57,7 +57,7 @@ public class TestShowsRepository extends AbstractRemoteRepository {
                 for (int k = 0; k < chapters.size(); k++) {
                     ShowsQuery.Chapter chapter = chapters.get(k);
                     ShowsQuery.Media media = chapter.media();
-                    links.add(media.hls());
+                    links.add(media.fragments().mediaInfo().hls());
                 }
             }
         }

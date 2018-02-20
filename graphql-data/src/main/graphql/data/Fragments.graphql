@@ -1,0 +1,84 @@
+fragment ShowInfo on ShowType {
+  id
+  title
+  description
+  cover
+}
+
+fragment MediaInfo on MediaType {
+  cover
+  trailer
+  hls
+  duration
+  hash
+}
+
+fragment InfluencerInfo on Influence {
+  first_name
+  last_name
+  id
+  type
+  schema
+  nickname
+  description
+  post
+  avatar
+  email
+  phone
+  last_login
+  token
+  is_subscribe
+  social
+}
+
+fragment SeasonInfo on SeasonType {
+   id
+   title
+}
+
+fragment VideoInfo on VideoType {
+   id
+   title
+   description
+   publish
+   summary
+   episode
+   cover
+}
+
+fragment TimecodeInfo on TimeCodeType {
+   id
+   start
+   end
+   pos_x
+   pos_y
+   carat
+}
+
+fragment PrizeInfo on PrizeType {
+   id
+   name
+   image
+   price
+   description
+   deliveryState
+}
+
+fragment SponsorInfo on SponsorType {
+   id
+   name
+   logo
+   description
+   is_subscribe
+   carat_earned
+   carats_available
+}
+
+fragment ChapterInfo on ChapterType {
+   id
+   title
+   publish
+   carats_earned
+   is_abused
+   progress
+}

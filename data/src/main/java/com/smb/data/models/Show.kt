@@ -3,22 +3,22 @@ package com.smb.data.models
 import android.os.Parcel
 import android.os.Parcelable
 
-class Video() : Parcelable {
-
+class Show() : Parcelable{
     var id: String? = null
     var title: String? = null
     var description: String? = null
     var cover: String? = null
-    var episode: Long? = null
-    var chapters: ArrayList<Chapter> = ArrayList()
+    var videos: ArrayList<Video> = ArrayList()
 
     constructor(parcel: Parcel) : this() {
         id = parcel.readString()
         title = parcel.readString()
         description = parcel.readString()
         cover = parcel.readString()
-        episode = parcel.readValue(Int::class.java.classLoader) as? Long
-        chapters = parcel.createTypedArrayList(Chapter.CREATOR)
+    }
+
+    override fun toString(): String {
+        return "Show(id=$id, title=$title, description=$description, cover=$cover)"
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -26,20 +26,18 @@ class Video() : Parcelable {
         parcel.writeString(title)
         parcel.writeString(description)
         parcel.writeString(cover)
-        parcel.writeValue(episode)
-        parcel.writeTypedList(chapters)
     }
 
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<Video> {
-        override fun createFromParcel(parcel: Parcel): Video {
-            return Video(parcel)
+    companion object CREATOR : Parcelable.Creator<Show> {
+        override fun createFromParcel(parcel: Parcel): Show {
+            return Show(parcel)
         }
 
-        override fun newArray(size: Int): Array<Video?> {
+        override fun newArray(size: Int): Array<Show?> {
             return arrayOfNulls(size)
         }
     }

@@ -45,10 +45,15 @@ public class ChaptersFragment extends VerticalGridFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initTitle();
-        initBackground();
         initPresenter();
         initObjectAdapter();
         initListeners();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initBackground();
     }
 
     private void initListeners() {
@@ -85,7 +90,9 @@ public class ChaptersFragment extends VerticalGridFragment {
 
     private void prepareBackgroundManager() {
         mBackgroundManager = BackgroundManager.getInstance(getActivity());
-        mBackgroundManager.attach(getActivity().getWindow());
+        if (!mBackgroundManager.isAttached()) {
+            mBackgroundManager.attach(getActivity().getWindow());
+        }
         mDefaultBackground = ContextCompat.getDrawable(getActivity(), R.drawable.default_background);
         metrics = getActivity().getResources().getDisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);

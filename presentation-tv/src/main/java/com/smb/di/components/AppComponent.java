@@ -6,6 +6,7 @@ import com.apollographql.apollo.ApolloClient;
 import com.smb.data.di.modules.ApolloModule;
 import com.smb.data.di.modules.ContextModule;
 import com.smb.data.http.graphql.GraphqlClientTypes;
+import com.smb.ui.show.ShowPresenter;
 import com.smb.ui.shows.ShowsFragment;
 
 import org.jetbrains.annotations.NotNull;
@@ -28,4 +29,6 @@ public interface AppComponent {
     Map<GraphqlClientTypes, ApolloClient> getApollo();
 
     void inject(@NotNull ShowsFragment showsFragment);
+
+    void inject(@NotNull ShowPresenter showPresenter);
 }

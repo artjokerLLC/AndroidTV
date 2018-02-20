@@ -14,7 +14,6 @@
 
 package com.smb.ui.shows
 
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -34,12 +33,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
-import com.smb.BrowseErrorActivity
 import com.smb.R
+import com.smb.data.mappers.VideoMapper
 import com.smb.data.models.Video
 import com.smb.data.repositories.tv.TestShowsRepository
 import com.smb.di.DependencyContainer
 import com.smb.ui.chapters.ChaptersActivity
+import com.smb.ui.show.ShowActivity
 import data.ShowsQuery
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -78,7 +78,7 @@ class ShowsFragment : BrowseFragment() {
 
     private fun handleShowsResponse(result: Response<ShowsQuery.Data>?) {
         val shows = result?.data()?.shows()
-        shows.let { it?.forEach({ show -> Log.e("Show", show?.title()) }) }
+        shows.let { it?.forEach({ show -> Log.e("Show", show?.fragments()?.showInfo()?.title()) }) }
         prepareBackgroundManager()
         setupUIElements()
         loadRows(shows)
@@ -86,21 +86,15 @@ class ShowsFragment : BrowseFragment() {
     }
 
     private fun loadRows(shows: List<ShowsQuery.Show>?) {
-        val list = VideoList.LIST
-
         mRowsAdapter = ArrayObjectAdapter(ListRowPresenter())
         val cardPresenter = ShowsCardPresenter()
-
         for (i in 0..(shows?.size!! - 1)) {
-            if (i != 0) {
-                Collections.shuffle(list)
-            }
             val listRowAdapter = ArrayObjectAdapter(cardPresenter)
-            shows[i].video().let { it?.forEach { video -> listRowAdapter.add(Video(video)) } }
+            shows[i].video().let { it?.forEach { video -> listRowAdapter.add(VideoMapper.map(video)) } }
 //            for (j in 0 until NUM_COLS) {
 //                listRowAdapter.add(LIST[j % 5])
 //            }
-            val header = HeaderItem(i.toLong(), shows[i].title())
+            val header = HeaderItem(i.toLong(), shows[i].fragments().showInfo().title())
             mRowsAdapter.add(ListRow(header, listRowAdapter))
         }
 
@@ -108,11 +102,10 @@ class ShowsFragment : BrowseFragment() {
 
         val mGridPresenter = GridItemPresenter()
         val gridRowAdapter = ArrayObjectAdapter(mGridPresenter)
-        gridRowAdapter.add(resources.getString(R.string.grid_view))
-        gridRowAdapter.add(getString(R.string.error_fragment))
-        gridRowAdapter.add(resources.getString(R.string.personal_settings))
+        gridRowAdapter.add(resources.getString(R.string.demo_show_details))
+//        gridRowAdapter.add(getString(R.string.error_fragment))
+//        gridRowAdapter.add(resources.getString(R.string.personal_settings))
         mRowsAdapter.add(ListRow(gridHeader, gridRowAdapter))
-
         adapter = mRowsAdapter
     }
 
@@ -132,7 +125,7 @@ class ShowsFragment : BrowseFragment() {
     }
 
     private fun setupUIElements() {
-        title = getString(R.string.browse_title)
+        title = getString(R.string.shows)
         // over title
         headersState = BrowseFragment.HEADERS_ENABLED
         isHeadersTransitionOnBackEnabled = true
@@ -165,7 +158,7 @@ class ShowsFragment : BrowseFragment() {
 
         val mGridPresenter = GridItemPresenter()
         val gridRowAdapter = ArrayObjectAdapter(mGridPresenter)
-        gridRowAdapter.add(resources.getString(R.string.grid_view))
+        gridRowAdapter.add(resources.getString(R.string.demo_show_details))
         gridRowAdapter.add(getString(R.string.error_fragment))
         gridRowAdapter.add(resources.getString(R.string.personal_settings))
         mRowsAdapter.add(ListRow(gridHeader, gridRowAdapter))
@@ -188,13 +181,11 @@ class ShowsFragment : BrowseFragment() {
                                    rowViewHolder: RowPresenter.ViewHolder, row: Row) {
 
             if (item is Video) {
-                Log.d(TAG, "Item: " + item.toString())
-                val chaptersIntent = ChaptersActivity.getIntent(activity, item.title, item.cardImageUrl, item.chapters)
+                val chaptersIntent = ChaptersActivity.getIntent(activity, item.title, item.cover, item.chapters)
                 startActivity(chaptersIntent)
             } else if (item is String) {
-                if (item.contains(getString(R.string.error_fragment))) {
-                    val intent = Intent(activity, BrowseErrorActivity::class.java)
-                    startActivity(intent)
+                if (item.contains(getString(R.string.demo_show_details))) {
+                    startActivity(ShowActivity.getIntent(activity, "5f925dcd-4c57-4cb6-963c-ba2751263673"))
                 } else {
                     Toast.makeText(activity, item, Toast.LENGTH_SHORT).show()
                 }
@@ -206,7 +197,7 @@ class ShowsFragment : BrowseFragment() {
         override fun onItemSelected(itemViewHolder: Presenter.ViewHolder?, item: Any?,
                                     rowViewHolder: RowPresenter.ViewHolder, row: Row) {
             if (item is Video) {
-                mBackgroundUri = item.backgroundImageUrl
+                mBackgroundUri = item.cover
                 startBackgroundTimer()
             }
         }
@@ -217,6 +208,7 @@ class ShowsFragment : BrowseFragment() {
         val height = mMetrics.heightPixels
         Glide.with(activity)
                 .load(uri)
+//                .load("https://i.ytimg.com/vi/TcTsZulWTJI/maxresdefault.jpg")
                 .centerCrop()
                 .error(mDefaultBackground)
                 .into<SimpleTarget<GlideDrawable>>(

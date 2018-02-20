@@ -71,33 +71,9 @@ object VideoList {
 
         val list = arrayListOf<Video>()
         for (index in title.indices) {
-            list.add(
-                    buildMovieInfo(
-                            "category",
-                            title[index],
-                            description,
-                            studio[index],
-                            videoUrl[index],
-                            cardImageUrl[index],
-                            bgImageUrl[index]))
 
         }
 
         return list
-    }
-
-    private fun buildMovieInfo(category: String, title: String,
-                               description: String, studio: String, videoUrl: String, cardImageUrl: String,
-                               backgroundImageUrl: String): Video {
-        val movie = Video()
-        movie.id = count++
-        movie.title = title
-        movie.description = description
-        movie.studio = studio
-        movie.category = category
-        movie.cardImageUrl = cardImageUrl
-        movie.backgroundImageUrl = backgroundImageUrl
-        movie.videoUrl = videoUrl
-        return movie
     }
 }

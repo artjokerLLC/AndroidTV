@@ -63,12 +63,12 @@ class ShowsCardPresenter : Presenter() {
         val cardView = viewHolder.view as ImageCardView
 
         Log.d(TAG, "onBindViewHolder")
-        if (video.cardImageUrl != null) {
+        if (video.cover != null) {
             cardView.titleText = video.title
             initChaptersCount(cardView, video)
             cardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT)
             Glide.with(viewHolder.view.context)
-                    .load(video.cardImageUrl)
+                    .load(video.cover)
                     .centerCrop()
                     .error(mDefaultCardImage)
                     .into(cardView.mainImageView)
