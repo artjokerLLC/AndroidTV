@@ -27,16 +27,11 @@ public class ChaptersActivity extends Activity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        initChaptersFragment();
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapters);
         container = findViewById(R.id.chapters_fragment_container);
+        initChaptersFragment();
     }
 
     private void initChaptersFragment() {

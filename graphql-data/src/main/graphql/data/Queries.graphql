@@ -17,21 +17,57 @@ videos{
 
 query ShowsQuery{
     shows {
-        id
-        title
+        ...ShowInfo
         video {
-          id
-          cover
-          title
-          episode
-          description
+          ...VideoInfo
           chapter {
-            title
+            ...ChapterInfo
             media {
-              cover
-              hls
+              ...MediaInfo
             }
           }
         }
       }
+}
+
+query ShowQuery($showId: ID){
+  show(id: $showId) {
+        ...ShowInfo
+        influence{
+          ...InfluencerInfo
+        }
+        like_this: like_this {
+          ...ShowInfo
+        }
+        season: season {
+          ...SeasonInfo
+          media: media {
+            ...MediaInfo
+          }
+          video: video {
+            ...VideoInfo
+            unwatched: unwatched {
+              progress
+            }
+            chapter: chapter {
+              ...ChapterInfo
+              timecode: timecode {
+                ...TimecodeInfo
+                sponsor: sponsor {
+                  ...SponsorInfo
+                  prize: prize {
+                    ...PrizeInfo
+                  }
+                }
+              }
+              media: media {
+                ...MediaInfo
+              }
+            }
+            influence: influence {
+              ...InfluencerInfo
+            }
+          }
+        }
+  }
 }
