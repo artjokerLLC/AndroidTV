@@ -2,8 +2,7 @@ package com.smb.data.authentication.networks;
 
 import android.app.Activity;
 
-
-import com.smb.data.models.SocialLoginResult;
+import com.smb.core.models.SocialLoginResult;
 
 import io.reactivex.Observable;
 

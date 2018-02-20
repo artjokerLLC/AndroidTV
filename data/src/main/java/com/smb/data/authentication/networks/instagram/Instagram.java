@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.smb.core.models.SocialLoginResult;
 import com.smb.data.RxBus;
 import com.smb.data.authentication.networks.SocialNetwork;
 import com.smb.data.authentication.networks.instagram.activities.InstagramAuthActivity;
@@ -17,7 +18,6 @@ import com.smb.data.authentication.networks.instagram.objects.IGPagInfo;
 import com.smb.data.authentication.networks.instagram.objects.IGSession;
 import com.smb.data.authentication.networks.instagram.objects.IGUser;
 import com.smb.data.authentication.networks.instagram.utils.InstagramKitLoginScope;
-import com.smb.data.models.SocialLoginResult;
 
 import io.reactivex.Observable;
 

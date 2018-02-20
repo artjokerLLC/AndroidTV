@@ -9,8 +9,12 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.smb.R;
 import com.smb.base.BaseActivity;
-import com.smb.data.repositories.api.OrientationRepository;
+import com.smb.core.repositories.OrientationRepository;
 import com.smb.player.SmbExoPlayer;
+
+import org.jetbrains.annotations.Nullable;
+
+import ru.terrakok.cicerone.Navigator;
 
 public class PlayerActivity extends BaseActivity implements PlayerView {
     public static final String TAG = "PlayerActivity";
@@ -99,5 +103,11 @@ public class PlayerActivity extends BaseActivity implements PlayerView {
                 }
                 break;
         }
+    }
+
+    @Nullable
+    @Override
+    public Navigator getNavigator() {
+        return null;
     }
 }

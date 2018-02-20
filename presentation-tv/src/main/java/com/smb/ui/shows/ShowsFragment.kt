@@ -34,9 +34,9 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
 import com.smb.R
-import com.smb.data.mappers.VideoMapper
+import com.smb.data.mappers.instances.VideoMapper
 import com.smb.data.models.Video
-import com.smb.data.repositories.tv.TestShowsRepository
+import com.smb.data.repositories.shows.TestShowsRepository
 import com.smb.di.DependencyContainer
 import com.smb.ui.chapters.ChaptersActivity
 import com.smb.ui.show.ShowActivity
