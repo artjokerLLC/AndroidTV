@@ -60,6 +60,7 @@ fragment PrizeInfo on PrizeType {
    name
    image
    price
+   claimed
    description
    deliveryState
 }
@@ -82,3 +83,14 @@ fragment ChapterInfo on ChapterType {
    is_abused
    progress
 }
+
+fragment Banner on MagicHour{
+   id
+   banner
+}
+
+fragment CategoryInfo on CategoryType {
+    id
+    name
+}
+

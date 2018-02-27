@@ -2,10 +2,12 @@ package com.smb.di.components;
 
 import android.content.Context;
 
-import com.apollographql.apollo.ApolloClient;
 import com.smb.data.di.modules.ApolloModule;
 import com.smb.data.di.modules.ContextModule;
+import com.smb.data.http.graphql.ApolloBuilder;
 import com.smb.data.http.graphql.GraphqlClientTypes;
+import com.smb.di.modules.RepositoryModule;
+import com.smb.di.modules.RepositoryModule;
 import com.smb.ui.show.ShowPresenter;
 import com.smb.ui.shows.ShowsFragment;
 
@@ -17,18 +19,16 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
-/**
- * Created by dev on 24.01.18.
- */
 @Singleton
-@Component(modules = {ContextModule.class, ApolloModule.class})
+@Component(modules = {ContextModule.class, ApolloModule.class, RepositoryModule.class})
 public interface AppComponent {
 
     Context getContext();
 
-    Map<GraphqlClientTypes, ApolloClient> getApollo();
+    Map<GraphqlClientTypes, ApolloBuilder> getApollo();
 
     void inject(@NotNull ShowsFragment showsFragment);
 
     void inject(@NotNull ShowPresenter showPresenter);
+
 }

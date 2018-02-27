@@ -1,20 +1,30 @@
 package com.smb.data.mappers.instances
 
 import com.apollographql.apollo.api.Response
-import com.smb.data.mappers.show
-import com.smb.data.mappers.showFromShowsQuery
-import com.smb.data.models.Show
-import data.ShowQuery
-import data.ShowsQuery
+import com.smb.core.models.Show
+import com.smb.data.mappers.*
+import data.*
 
 class ShowMapper {
     companion object {
-        fun map(data : Response<ShowQuery.Data>): Show {
-            return show.invoke(data.data()?.show()!!)
+        fun map(data: Response<ShowQuery.Data>): Show {
+            return show.invoke(data.data()?.show()?.fragments()?.showInfo()!!)
         }
 
-        fun map(data : ShowsQuery.Show): Show {
-            return showFromShowsQuery.invoke(data)
+        fun mapShows(data: List<ShowsQuery.Show>): List<com.smb.core.models.Show> {
+            return showFromShowsQuery.asListMapper().invoke(data)
+        }
+
+        fun map(data: List<TopShowsQuery.TopShow>): List<com.smb.core.models.Show> {
+            return topShow.asListMapper().invoke(data)
+        }
+
+        fun mapOrdered(data: List<OrderedShowsQuery.Show>): List<com.smb.core.models.Show> {
+            return orderedShows.asListMapper().invoke(data)
+        }
+
+        fun mapFollowed(data: List<FollowedShowQuery.SubShow>): List<com.smb.core.models.Show> {
+            return followedShows.asListMapper().invoke(data)
         }
     }
 }

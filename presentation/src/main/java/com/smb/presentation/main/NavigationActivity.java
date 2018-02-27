@@ -50,10 +50,10 @@ public abstract class NavigationActivity extends BaseActivity {
                 switch (screenKey) {
 
                     case Screen.Constants.HOME:
-                        return HomeFragment.newInstance();
+                        return HomeFragment.Companion.newInstance();
 
                     default:
-                        return HomeFragment.newInstance();
+                        return HomeFragment.Companion.newInstance();
                 }
 
             }

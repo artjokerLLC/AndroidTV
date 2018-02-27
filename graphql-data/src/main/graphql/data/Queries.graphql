@@ -27,6 +27,23 @@ query ShowsQuery{
             }
           }
         }
+        categories {
+          ...CategoryInfo
+        }
+      }
+}
+query OrderedShows($orderBy: [String] $limit: Int) {
+    shows(orderBy: $orderBy limit: $limit) {
+        ...ShowInfo
+        video {
+          ...VideoInfo
+          chapter {
+            ...ChapterInfo
+            media {
+              ...MediaInfo
+            }
+          }
+        }
       }
 }
 
@@ -55,7 +72,7 @@ query ShowQuery($showId: ID){
                 ...TimecodeInfo
                 sponsor: sponsor {
                   ...SponsorInfo
-                  prize: prize {
+                 prize: prize {
                     ...PrizeInfo
                   }
                 }
@@ -69,5 +86,74 @@ query ShowQuery($showId: ID){
             }
           }
         }
+  }
+}
+
+query BannersQuery{
+    magichours {
+         ...Banner
+        }
+     }
+
+query TopPrizes{
+  topPrize {
+    sponsor {
+      ...SponsorInfo
+    }
+    show {
+      ...ShowInfo
+    }
+    like_this {
+      ...PrizeInfo
+    }
+    ...PrizeInfo
+  }
+}
+
+query TopInfluencersQuery {
+  topInfluence {
+    ...InfluencerInfo
+  }
+}
+query TopShowsQuery{
+    topShow {
+        ...ShowInfo
+        video {
+          ...VideoInfo
+          chapter {
+            ...ChapterInfo
+            media {
+              ...MediaInfo
+            }
+          }
+        }
+      }
+}
+query FollowedShowQuery{
+  profile {
+    id
+    subShow {
+      ...ShowInfo
+    }
+  }
+}
+query FollowedInfluencerQuery{
+  profile {
+    id
+    subInfluence {
+      ...InfluencerInfo
+    }
+  }
+}
+
+query UnwatchedVideosQuery {
+    unwatched{
+    ...VideoInfo
+    }
+}
+
+query AlmostYoursQuery($limit: Int){
+  almostYours(limit: $limit) {
+    ...PrizeInfo
   }
 }

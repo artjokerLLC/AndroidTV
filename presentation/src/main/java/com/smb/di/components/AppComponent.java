@@ -2,14 +2,15 @@ package com.smb.di.components;
 
 import android.content.Context;
 
-import com.apollographql.apollo.ApolloClient;
 import com.smb.data.di.modules.ApolloModule;
 import com.smb.data.di.modules.ContextModule;
+import com.smb.data.http.graphql.ApolloBuilder;
 import com.smb.data.http.graphql.GraphqlClientTypes;
 import com.smb.di.modules.CiceroneModule;
 import com.smb.di.modules.RepositoryModule;
 import com.smb.navigation.NavigationLifecycle;
 import com.smb.presentation.auth.AuthPresenter;
+import com.smb.presentation.home.HomePresenter;
 import com.smb.presentation.home.activity.HomeRootPresenter;
 import com.smb.presentation.player.PlayerPresenter;
 import com.smb.presentation.test.TestPresenter;
@@ -33,7 +34,7 @@ public interface AppComponent {
 
     Context getContext();
 
-    Map<GraphqlClientTypes, ApolloClient> getApollo();
+    Map<GraphqlClientTypes, ApolloBuilder> getApollo();
 
     Router getRouter();
 
@@ -48,4 +49,6 @@ public interface AppComponent {
     void inject(NavigationLifecycle navigationLifecycle);
 
     void inject(HomeRootPresenter navigationPresenter);
+
+    void inject(HomePresenter homePresenter);
 }

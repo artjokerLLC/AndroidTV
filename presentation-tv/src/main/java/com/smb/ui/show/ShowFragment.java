@@ -26,13 +26,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.smb.R;
-import com.smb.data.models.Show;
+import com.smb.core.models.Show;
 
 /**
  * Displays a card with more details using a {@link DetailsFragment}.
  */
 public class ShowFragment extends DetailsFragment implements OnItemViewClickedListener,
-        OnItemViewSelectedListener {
+        OnItemViewSelectedListener, ShowView {
 
     public static final String SHOW = "SHOW";
 
@@ -53,9 +53,11 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
     private final DetailsFragmentBackgroundController mDetailsBackground =
             new DetailsFragmentBackgroundController(this);
 
-    public static ShowFragment newInstance(Show show) {
+    private ShowPresenter showPresenter;
+
+    public static ShowFragment newInstance(String showId) {
         Bundle args = new Bundle();
-        args.putParcelable(SHOW, show);
+        args.putString(SHOW, showId);
         ShowFragment fragment = new ShowFragment();
         fragment.setArguments(args);
         return fragment;
@@ -64,11 +66,12 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupUi(getArguments().getParcelable(SHOW));
+        showPresenter = new ShowPresenter(this);
+        showPresenter.getShow(getArguments().getString(SHOW));
         setupEventListeners();
     }
 
-    private void setupUi(Show show) {
+    private void setupUi(com.smb.core.models.Show show) {
 
         // Setup fragment
         setTitle(show.getTitle());
@@ -148,12 +151,7 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
 //        mRowsAdapter.add(new ListRow(header, listRowAdapter));
 
         setAdapter(mRowsAdapter);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startEntranceTransition();
-            }
-        }, 500);
+        new Handler().postDelayed(this::startEntranceTransition, 500);
         initializeBackground();
     }
 
@@ -185,7 +183,6 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
         setOnItemViewClickedListener(this);
     }
 
-
     @Override
     public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
                               RowPresenter.ViewHolder rowViewHolder, Row row) {
@@ -213,6 +210,21 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
         } else {
             getView().setBackground(null);
         }
+    }
+
+    @Override
+    public void viewShow(Show show) {
+        setupUi(show);
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
     }
 }
 

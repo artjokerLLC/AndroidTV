@@ -35,7 +35,7 @@
         </activity>
         <activity android:name=".ui.chapters.ChaptersActivity" />
         <activity android:name=".ui.player.PlaybackActivity" />
-        <activity android:name=".ui.show.ShowActivity"></activity>
+        <activity android:name=".ui.show.activity.ShowActivity"></activity>
     </application>
 
 </manifest>

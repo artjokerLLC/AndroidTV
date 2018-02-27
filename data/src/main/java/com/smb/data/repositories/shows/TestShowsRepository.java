@@ -2,10 +2,10 @@ package com.smb.data.repositories.shows;
 
 import android.support.annotation.NonNull;
 
-import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
+import com.smb.data.http.graphql.ApolloBuilder;
 import com.smb.data.http.graphql.GraphqlClientTypes;
-import com.smb.data.repositories.AbstractRemoteRepository;
+import com.smb.data.repositories.base.AbstractRemoteRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +17,15 @@ import javax.inject.Inject;
 import data.ShowsQuery;
 import io.reactivex.Observable;
 
-import static com.smb.data.http.graphql.GraphqlClientTypes.TEST;
+import static com.smb.data.http.graphql.GraphqlClientTypes.DATA;
 
 public class TestShowsRepository extends AbstractRemoteRepository {
     private Random randomGenerator = new Random();
 
     @Inject
-    public TestShowsRepository(Map<GraphqlClientTypes, ApolloClient> apollo) {
-        super(apollo.get(TEST));
+    public TestShowsRepository(Map<GraphqlClientTypes, ApolloBuilder> apollo) {
+        super(apollo.get(DATA));
+        setToken("testme");
     }
 
     public Observable<Response<ShowsQuery.Data>> getShows() {
