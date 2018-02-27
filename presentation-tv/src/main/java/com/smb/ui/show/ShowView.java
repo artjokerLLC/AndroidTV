@@ -1,13 +1,9 @@
 package com.smb.ui.show;
 
-import com.arellomobile.mvp.MvpView;
-import com.smb.data.models.Show;
+import com.smb.core.models.Show;
 
-interface ShowView extends MvpView{
-
-    void showFragment(Show show);
-
+public interface ShowView {
+    void viewShow(Show show);
     void showProgress();
-
     void hideProgress();
 }

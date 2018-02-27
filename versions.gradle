@@ -15,7 +15,6 @@ ext {
             multidex        : '1.0.2',
             moxy            : '1.5.3',
             exoplayer       : '2.6.1',
-            glide           : '3.8.0',
             apolloPlugin    : '0.4.3',
             constraintLayout: '1.0.2',
             support         : '27.0.2',
@@ -36,7 +35,8 @@ ext {
             traucer         : '1.0.1',
             hawk            : '2.0.1',
             twitter         : '3.2.0',
-            playServices         : '11.8.0',
+            playServices    : '11.8.0',
+            glide           : '3.8.0',
 
     ]
 }

@@ -5,24 +5,28 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/black"
         android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/bannersRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/top_prizes_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Top prizes" />
+                android:text="Top prizes"
+                android:textColor="@android:color/white" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/topPrizesRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/top_prizes_title" />
@@ -36,9 +40,11 @@
                 android:id="@+id/top_influencers_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Top influencers" />
+                android:text="Top influencers"
+                android:textColor="@android:color/white" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/topInfluencersRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/top_influencers_title" />
@@ -52,9 +58,11 @@
                 android:id="@+id/top_shows_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Top shows" />
+                android:text="Top shows"
+                android:textColor="@android:color/white" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/topShowsRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/top_shows_title" />
@@ -65,12 +73,31 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/continue_watching_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continue watching"
+                android:textColor="@android:color/white" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/continueWatchingRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/continue_watching_title" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
                 android:id="@+id/new_releases_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New releases" />
+                android:text="New releases"
+                android:textColor="@android:color/white" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/newReleasesRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/new_releases_title" />
@@ -81,12 +108,49 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/follow_shows_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shows I follow"
+                android:textColor="@android:color/white" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/followedShowsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/follow_shows_title" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/follow_influencers_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Influencers I follow"
+                android:textColor="@android:color/white" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/followedInfluencersRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/follow_influencers_title" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
                 android:id="@+id/almost_yours_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Almost yours" />
+                android:text="Almost yours"
+                android:textColor="@android:color/white" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/almostYoursRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/almost_yours_title" />
@@ -100,9 +164,11 @@
                 android:id="@+id/shows_by_genre_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shows by genre" />
+                android:text="Shows by genre"
+                android:textColor="@android:color/white" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/genresRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/shows_by_genre_title" />

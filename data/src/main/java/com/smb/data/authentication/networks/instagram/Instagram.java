@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.smb.core.models.SocialLoginResult;
+import com.smb.core.models.holders.SocialLoginResult;
 import com.smb.data.RxBus;
 import com.smb.data.authentication.networks.SocialNetwork;
 import com.smb.data.authentication.networks.instagram.activities.InstagramAuthActivity;

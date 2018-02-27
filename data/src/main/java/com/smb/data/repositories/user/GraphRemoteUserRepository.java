@@ -1,15 +1,15 @@
 package com.smb.data.repositories.user;
 
 
-import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
-import com.smb.core.models.SocialLoginResult;
 import com.smb.core.models.User;
+import com.smb.core.models.holders.SocialLoginResult;
 import com.smb.core.repositories.RemoteUserRepository;
 import com.smb.data.errors.ErrorMatcher;
+import com.smb.data.http.graphql.ApolloBuilder;
 import com.smb.data.http.graphql.GraphqlClientTypes;
 import com.smb.data.mappers.instances.UserMapper;
-import com.smb.data.repositories.AbstractRemoteRepository;
+import com.smb.data.repositories.base.AbstractRemoteRepository;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +30,7 @@ import static com.smb.data.http.graphql.GraphqlClientTypes.AUTHENTICATION;
 public class GraphRemoteUserRepository extends AbstractRemoteRepository implements RemoteUserRepository {
 
     @Inject
-    public GraphRemoteUserRepository(Map<GraphqlClientTypes, ApolloClient> apollo) {
+    public GraphRemoteUserRepository(Map<GraphqlClientTypes, ApolloBuilder> apollo) {
         super(apollo.get(AUTHENTICATION));
     }
 
@@ -72,6 +72,4 @@ public class GraphRemoteUserRepository extends AbstractRemoteRepository implemen
         return ErrorMatcher.isError(registerResponse) ? authorize(socialData).map(UserMapper.Companion::getAuthorizedUser)
                 : UserMapper.Companion.getRegisteredUser(registerResponse);
     }
-
-
 }

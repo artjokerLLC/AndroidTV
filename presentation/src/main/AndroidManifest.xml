@@ -22,7 +22,9 @@
         <activity
             android:name=".presentation.player.PlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".presentation.home.activity.HomeRootActivity" />
+        <activity
+            android:name=".presentation.home.activity.HomeRootActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

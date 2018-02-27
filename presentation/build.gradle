@@ -44,7 +44,10 @@ android {
         resolutionStrategy.force "com.android.support:support-v4:$versions.support"
     }
 }
-
+repositories {
+    mavenCentral()
+    google()
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$versions.support"
@@ -64,4 +67,5 @@ dependencies {
     implementation "com.android.support:multidex:$versions.multidex"
     implementation "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
     implementation 'ru.terrakok.cicerone:cicerone:3.0.0'
+
 }

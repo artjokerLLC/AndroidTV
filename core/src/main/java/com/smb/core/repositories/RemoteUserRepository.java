@@ -1,8 +1,8 @@
 package com.smb.core.repositories;
 
 
-import com.smb.core.models.SocialLoginResult;
 import com.smb.core.models.User;
+import com.smb.core.models.holders.SocialLoginResult;
 
 import org.jetbrains.annotations.NotNull;
 

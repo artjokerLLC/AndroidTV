@@ -39,7 +39,7 @@ import com.smb.data.models.Video
 import com.smb.data.repositories.shows.TestShowsRepository
 import com.smb.di.DependencyContainer
 import com.smb.ui.chapters.ChaptersActivity
-import com.smb.ui.show.ShowActivity
+import com.smb.ui.show.activity.ShowActivity
 import data.ShowsQuery
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -185,7 +185,7 @@ class ShowsFragment : BrowseFragment() {
                 startActivity(chaptersIntent)
             } else if (item is String) {
                 if (item.contains(getString(R.string.demo_show_details))) {
-                    startActivity(ShowActivity.getIntent(activity, "5f925dcd-4c57-4cb6-963c-ba2751263673"))
+                    startActivity(ShowActivity.getIntent(activity, "0fe30c6f-6a89-4956-8763-263fea646af6"))
                 } else {
                     Toast.makeText(activity, item, Toast.LENGTH_SHORT).show()
                 }

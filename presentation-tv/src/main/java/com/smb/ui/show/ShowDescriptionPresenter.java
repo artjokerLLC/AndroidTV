@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.smb.R;
-import com.smb.data.models.Show;
+import com.smb.core.models.Show;
 
 import javax.inject.Inject;
 

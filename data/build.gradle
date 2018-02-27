@@ -70,5 +70,6 @@ dependencies {
 
     //ExoPlayer
     api "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
+    api "com.github.bumptech.glide:glide:$versions.glide"
 }
 

@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import com.facebook.GraphResponse
 import com.facebook.login.LoginResult
-import com.smb.core.models.SocialLoginResult
+import com.smb.core.models.holders.SocialLoginResult
 import com.smb.data.authentication.SocialNetworkType.FACEBOOK
 import com.u.rxfacebook.RxFacebook
 import io.reactivex.Observable
