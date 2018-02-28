@@ -29,79 +29,89 @@ public class HomeScreenDataHolder {
         return banners;
     }
 
-    public void setBanners(List<Banner> banners) {
+    public HomeScreenDataHolder setBanners(List<Banner> banners) {
         this.banners = banners;
+        return this;
     }
 
     public List<Prize> getPrizes() {
         return prizes;
     }
 
-    public void setPrizes(List<Prize> prizes) {
+    public HomeScreenDataHolder setPrizes(List<Prize> prizes) {
         this.prizes = prizes;
+        return this;
     }
 
     public List<TopInfluencer> getTopInfluencers() {
         return topInfluencers;
     }
 
-    public void setTopInfluencers(List<TopInfluencer> topInfluencers) {
+    public HomeScreenDataHolder setTopInfluencers(List<TopInfluencer> topInfluencers) {
         this.topInfluencers = topInfluencers;
+        return this;
     }
 
     public List<Show> getTopShows() {
         return topShows;
     }
 
-    public void setTopShows(List<Show> topShows) {
+    public HomeScreenDataHolder setTopShows(List<Show> topShows) {
         this.topShows = topShows;
+        return this;
     }
 
     public List<Show> getNewReleases() {
         return newReleases;
     }
 
-    public void setNewReleases(List<Show> newReleases) {
+    public HomeScreenDataHolder setNewReleases(List<Show> newReleases) {
         this.newReleases = newReleases;
+        return this;
     }
 
     public List<Show> getFollowedShows() {
         return followedShows;
     }
 
-    public void setFollowedShows(List<Show> followedShows) {
+    public HomeScreenDataHolder setFollowedShows(List<Show> followedShows) {
         this.followedShows = followedShows;
+        return this;
     }
 
     public List<Influencer> getFollowedInfluencers() {
         return followedInfluencers;
     }
 
-    public void setFollowedInfluencers(List<Influencer> followedInfluencers) {
+    public HomeScreenDataHolder setFollowedInfluencers(List<Influencer> followedInfluencers) {
         this.followedInfluencers = followedInfluencers;
+        return this;
     }
 
     public List<Video> getUnwatched() {
         return unwatched;
     }
 
-    public void setUnwatched(List<Video> unwatched) {
+    public HomeScreenDataHolder setUnwatched(List<Video> unwatched) {
         this.unwatched = unwatched;
+        return this;
     }
 
     public List<Prize> getAlmostYours() {
         return almostYours;
     }
 
-    public void setAlmostYours(List<Prize> almostYours) {
+    public HomeScreenDataHolder setAlmostYours(List<Prize> almostYours) {
         this.almostYours = almostYours;
+        return this;
     }
 
     public List<CategorizedShow> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<CategorizedShow> categories) {
+    public HomeScreenDataHolder setCategories(List<CategorizedShow> categories) {
         this.categories = categories;
+        return this;
     }
 }
