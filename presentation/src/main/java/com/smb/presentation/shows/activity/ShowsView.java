@@ -1,4 +1,4 @@
-package com.smb.presentation.presentation.view.blank;
+package com.smb.presentation.shows.activity;
 
 import com.arellomobile.mvp.MvpView;
 

@@ -8,12 +8,15 @@ import com.smb.navigation.Screen.Constants.Tabs;
  */
 
 public enum Screen {
+
     HOME_TAB(Tabs.HOME_TAB),
     MAGIC_HOURS_TAB(Tabs.MAGIC_HOURS_TAB),
     REWARDS_TAB(Tabs.REWARDS_TAB),
     INFLUENCERS_TAB(Tabs.INFLUENCERS_TAB),
     SHOWS_TAB(Tabs.SHOWS_TAB),
-    HOME_FRAGMENT(Fragments.HOME_FRAGMENT);
+
+    HOME_FRAGMENT(Fragments.HOME_FRAGMENT),
+    SHOWS_FRAGMENT(Fragments.SHOWS_FRAGMENT);
 
 
     public final String TAG;
@@ -38,6 +41,7 @@ public enum Screen {
 
         public interface Fragments {
             String HOME_FRAGMENT = "home fragment";
+            String SHOWS_FRAGMENT = "shows fragment";
         }
     }
 }

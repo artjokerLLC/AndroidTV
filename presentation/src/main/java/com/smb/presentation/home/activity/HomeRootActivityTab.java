@@ -5,17 +5,20 @@ import android.content.Intent;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.smb.R;
-import com.smb.presentation.main.NavigationActivity;
+import com.smb.navigation.Screen;
 import com.smb.presentation.main.NavigationPresenter;
+import com.smb.presentation.main.TabNavigationActivity;
 
-public class HomeRootActivity extends NavigationActivity implements HomeRootView {
+public class HomeRootActivityTab extends TabNavigationActivity implements HomeRootView {
     public static final String TAG = "HomeActivity";
     @InjectPresenter
     HomeRootPresenter mHomeRootPresenter;
 
     public static Intent getIntent(final Context context) {
 
-        return new Intent(context, HomeRootActivity.class);
+        Intent intent = new Intent(context, HomeRootActivityTab.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        return intent;
     }
 
     @Override
@@ -25,8 +28,12 @@ public class HomeRootActivity extends NavigationActivity implements HomeRootView
 
     @Override
     protected void onPresenterReady() {
-        getNavigationMenu().setSelectedItemId(R.id.action_home);
         super.onPresenterReady();
+        mHomeRootPresenter.goTo(Screen.HOME_FRAGMENT);
+    }
 
+    @Override
+    protected int getTabId() {
+        return R.id.action_home;
     }
 }

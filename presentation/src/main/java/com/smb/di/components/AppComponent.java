@@ -15,6 +15,7 @@ import com.smb.presentation.auth.AuthPresenter;
 import com.smb.presentation.home.HomePresenter;
 import com.smb.presentation.home.activity.HomeRootPresenter;
 import com.smb.presentation.player.PlayerPresenter;
+import com.smb.presentation.shows.activity.ShowsRootPresenter;
 import com.smb.presentation.test.TestPresenter;
 
 import org.jetbrains.annotations.NotNull;
@@ -56,4 +57,6 @@ public interface AppComponent {
     void inject(HomeRootPresenter navigationPresenter);
 
     void inject(HomePresenter homePresenter);
+
+    void inject(ShowsRootPresenter showsRootPresenter);
 }
