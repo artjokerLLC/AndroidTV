@@ -19,10 +19,11 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         return inflater.inflate(viewId, container, false)
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         onPresenterReady()
     }
+
 
     abstract fun onPresenterReady()
 }

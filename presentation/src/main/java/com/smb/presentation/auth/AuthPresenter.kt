@@ -26,10 +26,6 @@ class AuthPresenter : MvpPresenter<AuthView>() {
     @Inject
     lateinit var localUserRepository: LocalUserRepository
 
-    override fun attachView(view: AuthView?) {
-        super.attachView(view)
-        DependencyContainer.getAppComponent().inject(this)
-    }
 
     fun loginBy(networkType: SocialNetworkType, activity: Activity) {
         socialNetworkProvider.loginBy(networkType, activity)
@@ -53,5 +49,9 @@ class AuthPresenter : MvpPresenter<AuthView>() {
         if (!TextUtils.isEmpty(user?.token)) {
             viewState.onUserLoggedIn()
         }
+    }
+
+    init {
+        DependencyContainer.getAppComponent().inject(this)
     }
 }

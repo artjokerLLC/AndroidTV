@@ -14,9 +14,8 @@ public class HomeRootPresenter extends NavigationPresenter<HomeRootView> {
     @Inject
     Router router;
 
-    @Override
-    public void attachView(HomeRootView view) {
-        super.attachView(view);
+    public HomeRootPresenter() {
+        super();
         DependencyContainer.getAppComponent().inject(this);
     }
 
@@ -24,4 +23,10 @@ public class HomeRootPresenter extends NavigationPresenter<HomeRootView> {
     public void goTo(Screen screen) {
         router.navigateTo(screen.getTag());
     }
+
+    @Override
+    public void root(Screen screen) {
+        router.newRootScreen(screen.getTag());
+    }
+
 }

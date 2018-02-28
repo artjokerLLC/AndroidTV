@@ -37,4 +37,6 @@ public abstract class NavigationPresenter<T extends MvpView> extends MvpPresente
     }
 
     public abstract void goTo(Screen screen);
+
+    public abstract void root(Screen homeFragment);
 }

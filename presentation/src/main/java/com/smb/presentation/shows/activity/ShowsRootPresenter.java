@@ -14,14 +14,19 @@ public class ShowsRootPresenter extends NavigationPresenter<ShowsView> {
     @Inject
     Router router;
 
-    @Override
-    public void attachView(ShowsView view) {
-        super.attachView(view);
+    public ShowsRootPresenter() {
+        super();
         DependencyContainer.getAppComponent().inject(this);
     }
+
 
     @Override
     public void goTo(Screen screen) {
         router.navigateTo(screen.getTag());
+    }
+
+    @Override
+    public void root(Screen screen) {
+        router.newRootScreen(screen.getTag());
     }
 }
