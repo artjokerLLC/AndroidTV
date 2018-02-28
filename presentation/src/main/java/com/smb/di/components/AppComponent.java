@@ -2,6 +2,7 @@ package com.smb.di.components;
 
 import android.content.Context;
 
+import com.smb.core.BaseUseCase;
 import com.smb.data.di.modules.ApolloModule;
 import com.smb.data.di.modules.ContextModule;
 import com.smb.data.http.graphql.ApolloBuilder;
@@ -23,6 +24,7 @@ import java.util.Map;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import io.reactivex.Scheduler;
 import ru.terrakok.cicerone.NavigatorHolder;
 import ru.terrakok.cicerone.Router;
 
@@ -40,6 +42,8 @@ public interface AppComponent {
     Router getRouter();
 
     NavigatorHolder getNavigationHolder();
+
+    Map<BaseUseCase.SchedulerType, Scheduler> getShedulers();
 
     void inject(@NotNull AuthPresenter authPresenter);
 

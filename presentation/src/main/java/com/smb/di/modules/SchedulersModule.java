@@ -19,7 +19,7 @@ public class SchedulersModule {
 
     @Provides
     @Singleton
-    Map<BaseUseCase.SchedulerType, ? extends Scheduler> appExecutionSchedulers() {
+    Map<BaseUseCase.SchedulerType, Scheduler> appExecutionSchedulers() {
         return new HashMap<BaseUseCase.SchedulerType, Scheduler>() {{
             put(BaseUseCase.SchedulerType.WORK, Schedulers.io());
             put(BaseUseCase.SchedulerType.WORK_RESULT, AndroidSchedulers.mainThread());

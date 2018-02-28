@@ -5734,20 +5734,6 @@
               "description": "Update settings",
               "args": [
                 {
-                  "name": "AutoFollowing",
-                  "description": "",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "Boolean",
-                      "ofType": null
-                    }
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "CanBuyPrize",
                   "description": "When viewer earned carats to buy some prizes from subscribed sponsors",
                   "type": {
