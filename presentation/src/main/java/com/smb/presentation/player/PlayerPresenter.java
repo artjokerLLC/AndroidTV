@@ -21,9 +21,8 @@ public class PlayerPresenter extends MvpPresenter<PlayerView> {
     OrientationRepository orientationRepository;
     private Disposable orientationDisposable;
 
-    @Override
-    public void attachView(PlayerView view) {
-        super.attachView(view);
+    public PlayerPresenter() {
+        super();
         DependencyContainer.getAppComponent().inject(this);
     }
 

@@ -22,9 +22,8 @@ public class HomePresenter extends MvpPresenter<HomeView> {
     @Inject
     Context appContext;
 
-    @Override
-    public void attachView(HomeView view) {
-        super.attachView(view);
+    public HomePresenter() {
+        super();
         DependencyContainer.getAppComponent().inject(this);
     }
 

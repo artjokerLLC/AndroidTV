@@ -22,10 +22,16 @@
         <activity
             android:name=".presentation.player.PlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
             android:name=".presentation.home.activity.HomeRootActivityTab"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".presentation.shows.activity.ShowsRootActivityTab" />
+
+        <activity
+            android:name=".presentation.shows.activity.ShowsRootActivityTab"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

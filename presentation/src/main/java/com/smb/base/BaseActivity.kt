@@ -18,10 +18,6 @@ abstract class BaseActivity : MvpAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewId)
-    }
-
-    override fun onStart() {
-        super.onStart()
         onPresenterReady()
     }
 

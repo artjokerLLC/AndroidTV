@@ -21,6 +21,7 @@ public class HomeRootActivityTab extends TabNavigationActivity implements HomeRo
         return intent;
     }
 
+
     @Override
     public NavigationPresenter getNavigationPresenter() {
         return mHomeRootPresenter;
@@ -29,7 +30,7 @@ public class HomeRootActivityTab extends TabNavigationActivity implements HomeRo
     @Override
     protected void onPresenterReady() {
         super.onPresenterReady();
-        mHomeRootPresenter.goTo(Screen.HOME_FRAGMENT);
+        mHomeRootPresenter.root(Screen.HOME_FRAGMENT);
     }
 
     @Override
