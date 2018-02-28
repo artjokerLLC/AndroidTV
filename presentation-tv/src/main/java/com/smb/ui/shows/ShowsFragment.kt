@@ -34,10 +34,10 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
 import com.smb.R
-import com.smb.data.mappers.instances.VideoMapper
 import com.smb.data.models.Video
 import com.smb.data.repositories.shows.TestShowsRepository
 import com.smb.di.DependencyContainer
+import com.smb.models.VideoMapper
 import com.smb.ui.chapters.ChaptersActivity
 import com.smb.ui.show.activity.ShowActivity
 import data.ShowsQuery
@@ -185,7 +185,7 @@ class ShowsFragment : BrowseFragment() {
                 startActivity(chaptersIntent)
             } else if (item is String) {
                 if (item.contains(getString(R.string.demo_show_details))) {
-                    startActivity(ShowActivity.getIntent(activity, "0fe30c6f-6a89-4956-8763-263fea646af6"))
+                    startActivity(ShowActivity.getIntent(activity, "e42818f0-66a1-40cb-8648-42855b0d39f4"))
                 } else {
                     Toast.makeText(activity, item, Toast.LENGTH_SHORT).show()
                 }

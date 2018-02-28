@@ -3,6 +3,7 @@ fragment ShowInfo on ShowType {
   title
   description
   cover
+  cover_tv
 }
 
 fragment MediaInfo on MediaType {
@@ -44,6 +45,7 @@ fragment VideoInfo on VideoType {
    summary
    episode
    cover
+   cover_tv
 }
 
 fragment TimecodeInfo on TimeCodeType {

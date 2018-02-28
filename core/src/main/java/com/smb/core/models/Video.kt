@@ -17,6 +17,7 @@ data class Video(val id: String) : Represantable {
     var summary: String = ""
     var views: Long = 0
     var type: Int = 0
+    var chapters : List<Chapter>? = null
 
     override fun getIcon() = cover
 }

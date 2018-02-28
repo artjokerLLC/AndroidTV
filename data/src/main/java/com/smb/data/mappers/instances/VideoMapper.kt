@@ -1,16 +1,16 @@
 package com.smb.data.mappers.instances
 
 
+import com.smb.core.models.Video
+import com.smb.data.mappers.fullVideo
 import com.smb.data.mappers.unwatchedVideos
-import com.smb.data.mappers.videoToRefactor
-import com.smb.data.models.Video
 import data.ShowsQuery
 import data.UnwatchedVideosQuery
 
 class VideoMapper {
     companion object {
         fun map(data: ShowsQuery.Video): Video {
-            return videoToRefactor.invoke(data)
+            return fullVideo.invoke(data)
         }
 
         fun map(data: UnwatchedVideosQuery.Data): List<com.smb.core.models.Video> {

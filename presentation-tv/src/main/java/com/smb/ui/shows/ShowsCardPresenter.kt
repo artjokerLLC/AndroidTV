@@ -76,7 +76,7 @@ class ShowsCardPresenter : Presenter() {
     }
 
     private fun initChaptersCount(cardView: ImageCardView, video: Video) {
-        cardView.contentText = context.resources.getQuantityString(R.plurals.chapters_plurals, video.chapters.size, video.chapters.size)
+        cardView.contentText = context.resources.getQuantityString(R.plurals.chapters_plurals, video.chapters!!.size, video.chapters!!.size)
     }
 
     override fun onUnbindViewHolder(viewHolder: Presenter.ViewHolder) {
