@@ -5,11 +5,11 @@ import com.arellomobile.mvp.MvpView;
 import com.smb.R;
 import com.smb.navigation.Screen;
 
-import static com.smb.navigation.Screen.HOME;
-import static com.smb.navigation.Screen.INFLUENCERS;
-import static com.smb.navigation.Screen.MAGIC_HOURS;
-import static com.smb.navigation.Screen.REWARDS;
-import static com.smb.navigation.Screen.SHOWS;
+import static com.smb.navigation.Screen.HOME_TAB;
+import static com.smb.navigation.Screen.INFLUENCERS_TAB;
+import static com.smb.navigation.Screen.MAGIC_HOURS_TAB;
+import static com.smb.navigation.Screen.REWARDS_TAB;
+import static com.smb.navigation.Screen.SHOWS_TAB;
 
 
 public abstract class NavigationPresenter<T extends MvpView> extends MvpPresenter<T> {
@@ -18,19 +18,19 @@ public abstract class NavigationPresenter<T extends MvpView> extends MvpPresente
         Screen screen = null;
         switch (itemId) {
             case R.id.action_home:
-                screen = HOME;
+                screen = HOME_TAB;
                 break;
             case R.id.action_magic_hours:
-                screen = MAGIC_HOURS;
+                screen = MAGIC_HOURS_TAB;
                 break;
             case R.id.action_rewards:
-                screen = REWARDS;
+                screen = REWARDS_TAB;
                 break;
             case R.id.action_influencers:
-                screen = INFLUENCERS;
+                screen = INFLUENCERS_TAB;
                 break;
             case R.id.action_shows:
-                screen = SHOWS;
+                screen = SHOWS_TAB;
                 break;
         }
         return screen;

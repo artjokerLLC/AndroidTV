@@ -25,6 +25,7 @@
         <activity
             android:name=".presentation.home.activity.HomeRootActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".presentation.shows.ShowsRootActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

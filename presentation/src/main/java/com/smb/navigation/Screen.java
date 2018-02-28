@@ -1,15 +1,20 @@
 package com.smb.navigation;
 
+import com.smb.navigation.Screen.Constants.Fragments;
+import com.smb.navigation.Screen.Constants.Tabs;
+
 /**
  * Created by dev on 19.02.18.
  */
 
 public enum Screen {
-    HOME(Constants.HOME),
-    MAGIC_HOURS(Constants.MAGIC_HOURS),
-    REWARDS(Constants.REWARDS),
-    INFLUENCERS(Constants.INFLUENCERS),
-    SHOWS(Constants.SHOWS);
+    HOME_TAB(Tabs.HOME_TAB),
+    MAGIC_HOURS_TAB(Tabs.MAGIC_HOURS_TAB),
+    REWARDS_TAB(Tabs.REWARDS_TAB),
+    INFLUENCERS_TAB(Tabs.INFLUENCERS_TAB),
+    SHOWS_TAB(Tabs.SHOWS_TAB),
+    HOME_FRAGMENT(Fragments.HOME_FRAGMENT);
+
 
     public final String TAG;
 
@@ -22,10 +27,17 @@ public enum Screen {
     }
 
     public static class Constants {
-        public static final String HOME = "home";
-        public static final String MAGIC_HOURS = "magic hours";
-        public static final String REWARDS = "rewards";
-        public static final String INFLUENCERS = "influencers";
-        public static final String SHOWS = "shows";
+
+        public interface Tabs {
+            String HOME_TAB = "home tab";
+            String MAGIC_HOURS_TAB = "magic hours tab";
+            String REWARDS_TAB = "rewards tab";
+            String INFLUENCERS_TAB = "influencers tab";
+            String SHOWS_TAB = "shows tab";
+        }
+
+        public interface Fragments {
+            String HOME_FRAGMENT = "home fragment";
+        }
     }
 }

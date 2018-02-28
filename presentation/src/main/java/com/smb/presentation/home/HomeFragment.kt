@@ -50,7 +50,7 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun onPresenterReady() {
         showProgress()
-        mHomePresenter.getData()
+        // mHomePresenter.getData()
     }
 
     override fun onDataFetched(homeScreenDataHolder: HomeScreenDataHolder?) {

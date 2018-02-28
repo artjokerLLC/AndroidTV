@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.smb.R;
 import com.smb.presentation.main.NavigationActivity;
 import com.smb.presentation.main.NavigationPresenter;
 
@@ -13,9 +14,8 @@ public class HomeRootActivity extends NavigationActivity implements HomeRootView
     HomeRootPresenter mHomeRootPresenter;
 
     public static Intent getIntent(final Context context) {
-        Intent intent = new Intent(context, HomeRootActivity.class);
 
-        return intent;
+        return new Intent(context, HomeRootActivity.class);
     }
 
     @Override
@@ -23,5 +23,10 @@ public class HomeRootActivity extends NavigationActivity implements HomeRootView
         return mHomeRootPresenter;
     }
 
+    @Override
+    protected void onPresenterReady() {
+        getNavigationMenu().setSelectedItemId(R.id.action_home);
+        super.onPresenterReady();
 
+    }
 }
