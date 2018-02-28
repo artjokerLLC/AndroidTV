@@ -8,6 +8,7 @@ import com.smb.data.http.graphql.ApolloBuilder;
 import com.smb.data.http.graphql.GraphqlClientTypes;
 import com.smb.di.modules.CiceroneModule;
 import com.smb.di.modules.RepositoryModule;
+import com.smb.di.modules.SchedulersModule;
 import com.smb.navigation.NavigationLifecycle;
 import com.smb.presentation.auth.AuthPresenter;
 import com.smb.presentation.home.HomePresenter;
@@ -29,7 +30,7 @@ import ru.terrakok.cicerone.Router;
  * Created by dev on 24.01.18.
  */
 @Singleton
-@Component(modules = {ContextModule.class, ApolloModule.class, RepositoryModule.class, CiceroneModule.class})
+@Component(modules = {ContextModule.class, ApolloModule.class, RepositoryModule.class, CiceroneModule.class, SchedulersModule.class})
 public interface AppComponent {
 
     Context getContext();
