@@ -10,15 +10,16 @@ import com.smb.R;
 import com.smb.base.BaseActivity;
 import com.smb.navigation.Screen;
 import com.smb.presentation.home.HomeFragment;
-import com.smb.presentation.home.activity.HomeRootActivity;
-import com.smb.presentation.shows.ShowsRootActivity;
+import com.smb.presentation.home.activity.HomeRootActivityTab;
+import com.smb.presentation.shows.ShowsFragment;
+import com.smb.presentation.shows.activity.ShowsRootActivityTab;
 
 import org.jetbrains.annotations.Nullable;
 
 import ru.terrakok.cicerone.Navigator;
 import ru.terrakok.cicerone.android.SupportAppNavigator;
 
-public abstract class NavigationActivity extends BaseActivity {
+public abstract class TabNavigationActivity extends BaseActivity {
     public static final String TAG = "NavigationActivity";
     private BottomNavigationView navigationMenu;
 
@@ -40,8 +41,7 @@ public abstract class NavigationActivity extends BaseActivity {
 
     @Override
     protected void onPresenterReady() {
-
-
+        getNavigationMenu().setSelectedItemId(getTabId());
         navigationMenu.setOnNavigationItemSelectedListener(item -> {
             int itemId = item.getItemId();
             NavigationPresenter navigationPresenter = getNavigationPresenter();
@@ -50,6 +50,8 @@ public abstract class NavigationActivity extends BaseActivity {
             return true;
         });
     }
+
+    protected abstract int getTabId();
 
     public abstract NavigationPresenter getNavigationPresenter();
 
@@ -65,6 +67,9 @@ public abstract class NavigationActivity extends BaseActivity {
                     case Screen.Constants.Fragments.HOME_FRAGMENT:
                         return HomeFragment.Companion.newInstance();
 
+                    case Screen.Constants.Fragments.SHOWS_FRAGMENT:
+                        return ShowsFragment.newInstance();
+
                     default:
                         return null;
                 }
@@ -75,9 +80,9 @@ public abstract class NavigationActivity extends BaseActivity {
             protected Intent createActivityIntent(Context context, String screenKey, Object data) {
                 switch (screenKey) {
                     case Screen.Constants.Tabs.HOME_TAB:
-                        return HomeRootActivity.getIntent(context);
+                        return HomeRootActivityTab.getIntent(context);
                     case Screen.Constants.Tabs.SHOWS_TAB:
-                        return ShowsRootActivity.getIntent(context);
+                        return ShowsRootActivityTab.getIntent(context);
                     default:
                         return null;
                 }

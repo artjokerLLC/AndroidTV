@@ -9,7 +9,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.smb.R
 import com.smb.base.BaseActivity
 import com.smb.data.authentication.SocialNetworkType.*
-import com.smb.presentation.home.activity.HomeRootActivity
+import com.smb.presentation.home.activity.HomeRootActivityTab
 import kotlinx.android.synthetic.main.activity_auth.*
 import ru.terrakok.cicerone.Navigator
 
@@ -44,7 +44,7 @@ class AuthActivity : BaseActivity(), AuthView {
 
     override fun onUserLoggedIn() {
         // startActivity(TestActivity.getIntent(this))
-        startActivity(HomeRootActivity.getIntent(this))
+        startActivity(HomeRootActivityTab.getIntent(this))
     }
 
     override fun getNavigator(): Navigator? {
