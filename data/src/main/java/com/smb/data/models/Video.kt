@@ -9,6 +9,7 @@ class Video() : Parcelable {
     var title: String? = null
     var description: String? = null
     var cover: String? = null
+    var coverTv: String? = null
     var episode: Long? = null
     var chapters: ArrayList<Chapter> = ArrayList()
 
@@ -17,6 +18,7 @@ class Video() : Parcelable {
         title = parcel.readString()
         description = parcel.readString()
         cover = parcel.readString()
+        coverTv = parcel.readString()
         episode = parcel.readValue(Int::class.java.classLoader) as? Long
         chapters = parcel.createTypedArrayList(Chapter.CREATOR)
     }
@@ -26,6 +28,7 @@ class Video() : Parcelable {
         parcel.writeString(title)
         parcel.writeString(description)
         parcel.writeString(cover)
+        parcel.writeString(coverTv)
         parcel.writeValue(episode)
         parcel.writeTypedList(chapters)
     }

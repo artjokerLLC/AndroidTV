@@ -8,6 +8,7 @@ class Show(var id: String? = null,
            var cover: String? = null) : Represantable {
 
     var categories: List<Category>? = null
+    var video: List<Video>? = null
 
     override fun getIcon() = cover
 

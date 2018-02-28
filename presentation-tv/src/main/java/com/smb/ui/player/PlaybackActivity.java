@@ -9,7 +9,6 @@ import android.view.MotionEvent;
 
 import com.smb.R;
 import com.smb.data.models.Chapter;
-import com.smb.ui.player2.VideoConsumptionExampleWithExoPlayerFragment;
 
 import static com.smb.ui.player.PlaybackFragment.CHAPTER_TAG;
 
@@ -41,8 +40,7 @@ public class PlaybackActivity extends Activity {
 
     private void initVideoFragment() {
         mPlaybackFragment = PlaybackFragment.newInstance(getIntent().getParcelableExtra(CHAPTER_TAG));
-        VideoConsumptionExampleWithExoPlayerFragment videoConsumptionExampleWithExoPlayerFragment = VideoConsumptionExampleWithExoPlayerFragment.newInstance(getIntent().getParcelableExtra(CHAPTER_TAG));
-        getFragmentManager()
+       getFragmentManager()
                 .beginTransaction()
                 .add(R.id.video_fragment_container,
                         mPlaybackFragment,

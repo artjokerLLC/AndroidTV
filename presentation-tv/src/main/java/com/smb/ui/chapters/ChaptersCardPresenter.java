@@ -10,6 +10,8 @@ import com.bumptech.glide.Glide;
 import com.smb.R;
 import com.smb.data.models.Chapter;
 
+import static android.support.v17.leanback.widget.ImageCardView.CARD_TYPE_FLAG_CONTENT;
+
 public class ChaptersCardPresenter extends Presenter{
 
     private Drawable defaultCardImage;
@@ -30,6 +32,7 @@ public class ChaptersCardPresenter extends Presenter{
                 super.setSelected(selected);
             }
         };
+        cardView.setCardType(CARD_TYPE_FLAG_CONTENT);
         cardView.setFocusable(true);
         cardView.setFocusableInTouchMode(true);
         return new Presenter.ViewHolder(cardView);
@@ -40,10 +43,10 @@ public class ChaptersCardPresenter extends Presenter{
         Chapter chapter = (Chapter)item;
         ImageCardView cardView = (ImageCardView)viewHolder.view;
         cardView.setTitleText(chapter.getTitle());
-        cardView.setContentText("Sample text");
+//        cardView.setContentText("Sample text");
         cardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
         Glide.with(viewHolder.view.getContext())
-                .load(chapter.getMedia().getCover())
+                .load(chapter.getMedia() != null ? chapter.getMedia().getCover() : "")
                 .centerCrop()
                 .error(defaultCardImage)
                 .into(cardView.getMainImageView());

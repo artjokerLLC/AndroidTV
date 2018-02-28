@@ -12,7 +12,7 @@ class ShowMapper {
         }
 
         fun mapShows(data: List<ShowsQuery.Show>): List<com.smb.core.models.Show> {
-            return showFromShowsQuery.asListMapper().invoke(data)
+            return fullShow.asListMapper().invoke(data)
         }
 
         fun map(data: List<TopShowsQuery.TopShow>): List<com.smb.core.models.Show> {
