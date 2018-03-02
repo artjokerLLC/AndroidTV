@@ -79,8 +79,27 @@ val influencer = Transformer.build<InfluencerInfo, Influencer> {
             last_name() ?: "", first_name() ?: "")
     influencer
 }
+
+val influencers = Transformer.build<InfluencersCategoriesQuery.Influence, InfluencerInfo> {
+    fragments().influencerInfo()
+}
 val followedInfluencer = Transformer.build<FollowedInfluencerQuery.SubInfluence, Influencer> {
     influencer.invoke(fragments().influencerInfo())
+}
+val recommendedInfluencer = Transformer.build<RecommendedInfluencersQuery.RecommendedInfluence, Influencer> {
+    influencer.invoke(fragments().influencerInfo())
+}
+val creatorInfluencer = Transformer.build<InfluenceByTypeQuery.Influence, Influencer> {
+    influencer.invoke(fragments().influencerInfo())
+}
+val categoryInfluencer = Transformer.build<InfluencersCategoriesQuery.Category, CategorizedInfluence> {
+    val category = categoryInfo.invoke(fragments().categoryInfo())
+    val categorizedInfluence = CategorizedInfluence(category)
+    val infos = influencers.asListMapper().invoke(influences())
+    val influencers = influencer.asListMapper().invoke(infos)
+    categorizedInfluence.influencers = influencers
+    categorizedInfluence
+
 }
 val topInfluencer = Transformer.build<TopInfluencersQuery.TopInfluence, TopInfluencer> {
     val influencerInfo = fragments().influencerInfo()
@@ -145,6 +164,9 @@ val show = Transformer.build<ShowInfo, Show> {
     show.cover = cover()
     show.id = id()
     show
+}
+val categoryInfo = Transformer.build<CategoryInfo, Category> {
+    Category(id(), name())
 }
 
 val video = Transformer.build<VideoInfo, Video> {

@@ -163,3 +163,24 @@ query RecommendedShows($limit: Int,$offset: Int){
         ...ShowInfo
   }
 }
+
+query RecommendedInfluencers{
+  recommendedInfluences {
+    ...InfluencerInfo
+  }
+}
+
+query InfluenceByTypeQuery($type: Int){
+  influences(type: $type){
+    ...InfluencerInfo
+  }
+}
+
+query InfluencersCategoriesQuery{
+  category {
+    ...CategoryInfo
+    influences {
+      ...InfluencerInfo
+    }
+  }
+}

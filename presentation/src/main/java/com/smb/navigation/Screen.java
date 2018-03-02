@@ -16,8 +16,8 @@ public enum Screen {
     SHOWS_TAB(Tabs.SHOWS_TAB),
 
     HOME_FRAGMENT(Fragments.HOME_FRAGMENT),
-    SHOWS_FRAGMENT(Fragments.SHOWS_FRAGMENT);
-
+    SHOWS_FRAGMENT(Fragments.SHOWS_FRAGMENT),
+    INFLUENCERS_FRAGMENT(Fragments.INFLUENCERS_FRAGMENT);
 
     public final String TAG;
 
@@ -42,6 +42,7 @@ public enum Screen {
         public interface Fragments {
             String HOME_FRAGMENT = "home fragment";
             String SHOWS_FRAGMENT = "shows fragment";
+            String INFLUENCERS_FRAGMENT = "influencers fragment";
         }
     }
 }

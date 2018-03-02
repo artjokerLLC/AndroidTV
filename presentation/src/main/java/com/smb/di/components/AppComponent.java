@@ -14,6 +14,8 @@ import com.smb.navigation.NavigationLifecycle;
 import com.smb.presentation.auth.AuthPresenter;
 import com.smb.presentation.home.HomePresenter;
 import com.smb.presentation.home.activity.HomeRootPresenter;
+import com.smb.presentation.influencers.InfluencersPresenter;
+import com.smb.presentation.influencers.activity.InfluencersRootPresenter;
 import com.smb.presentation.player.PlayerPresenter;
 import com.smb.presentation.shows.ShowsPresenter;
 import com.smb.presentation.shows.activity.ShowsRootPresenter;
@@ -62,4 +64,8 @@ public interface AppComponent {
     void inject(ShowsRootPresenter showsRootPresenter);
 
     void inject(ShowsPresenter showsPresenter);
+
+    void inject(InfluencersRootPresenter influencersRootPresenter);
+
+    void inject(InfluencersPresenter influencersPresenter);
 }

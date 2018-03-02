@@ -1,6 +1,5 @@
 package com.smb.presentation.shows;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -18,6 +17,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+
+import static com.smb.views.HorizontalRecyclerView.addTo;
 
 public class ShowsFragment extends BaseFragment implements ShowsView {
     public static final String TAG = "ShowsFragment";
@@ -40,12 +41,6 @@ public class ShowsFragment extends BaseFragment implements ShowsView {
         container = view.findViewById(R.id.showsContainer);
     }
 
-    private HorizontalRecyclerView addRecycler(Context context) {
-        HorizontalRecyclerView horizontalRecyclerView = new HorizontalRecyclerView(context);
-        container.addView(horizontalRecyclerView);
-        return horizontalRecyclerView;
-    }
-
     @Override
     protected int getViewId() {
         return R.layout.fragment_shows;
@@ -62,14 +57,14 @@ public class ShowsFragment extends BaseFragment implements ShowsView {
         hideProgress();
         List<Show> recommended = data.getRecommended();
         if (recommended != null && recommended.size() > 0) {
-            HorizontalRecyclerView horizontalRecyclerView = addRecycler(container.getContext());
+            HorizontalRecyclerView horizontalRecyclerView = addTo(container.getContext(), container);
             horizontalRecyclerView.getRecyclerView().setAdapter(new ShowsAdapter(recommended));
             horizontalRecyclerView.getTitle().setText(R.string.recommended_title);
         }
 
         List<Show> subscriptions = data.getSubscriptions();
         if (subscriptions != null && subscriptions.size() > 0) {
-            HorizontalRecyclerView horizontalRecyclerView = addRecycler(container.getContext());
+            HorizontalRecyclerView horizontalRecyclerView = addTo(container.getContext(), container);
             horizontalRecyclerView.getRecyclerView().setAdapter(new ShowsAdapter(subscriptions));
             horizontalRecyclerView.getTitle().setText(R.string.followed_title);
         }
@@ -79,7 +74,7 @@ public class ShowsFragment extends BaseFragment implements ShowsView {
             CategorizedShow categorizedShow = categories.get(i);
             Category category = categorizedShow.getCategory();
             List<Show> shows = categorizedShow.getShows();
-            HorizontalRecyclerView horizontalRecyclerView = addRecycler(container.getContext());
+            HorizontalRecyclerView horizontalRecyclerView = addTo(container.getContext(), container);
             horizontalRecyclerView.getRecyclerView().setAdapter(new ShowsAdapter(shows));
             horizontalRecyclerView.getTitle().setText(category.getName());
         }
