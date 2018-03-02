@@ -21,6 +21,7 @@ import javax.inject.Inject;
 
 import data.FollowedShowQuery;
 import data.OrderedShowsQuery;
+import data.RecommendedShowsQuery;
 import data.ShowQuery;
 import data.ShowsQuery;
 import data.TopShowsQuery;
@@ -106,6 +107,18 @@ public class GraphShowRepository extends BaseDataRepository implements ShowRepos
     @Override
     public Observable<List<CategorizedShow>> getCategorizedShows(Size size) {
         return getShows(size).map(CategorizedShowMapper.INSTANCE::map);
+    }
+
+    @Override
+    public Observable<List<Show>> getRecommendedShows(Size size) {
+        updateToken();
+        RecommendedShowsQuery query = RecommendedShowsQuery.builder()
+                .limit(10L)
+                .offset(0L)
+                .build();
+        return query(query)
+                .map(dataResponse -> ShowMapper.Companion.mapRecommended(dataResponse.data().recommendedShow()))
+                .flatMap(shows -> preloadToCache(getAppContext(), shows, size), (shows, files) -> shows);
     }
 
 

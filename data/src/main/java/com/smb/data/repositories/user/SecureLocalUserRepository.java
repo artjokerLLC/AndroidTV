@@ -34,6 +34,7 @@ public class SecureLocalUserRepository implements LocalUserRepository {
     @Override
     public User get() {
         String json = Hawk.get(USER);
-        return new Gson().fromJson(json, User.class);
+        User user = new Gson().fromJson(json, User.class);
+        return user;
     }
 }

@@ -26,5 +26,9 @@ class ShowMapper {
         fun mapFollowed(data: List<FollowedShowQuery.SubShow>): List<com.smb.core.models.Show> {
             return followedShows.asListMapper().invoke(data)
         }
+
+        fun mapRecommended(data: List<RecommendedShowsQuery.RecommendedShow>): List<com.smb.core.models.Show> {
+            return recommendedShows.asListMapper().invoke(data)
+        }
     }
 }

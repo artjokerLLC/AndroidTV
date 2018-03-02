@@ -13,6 +13,7 @@ import io.reactivex.Observable;
  */
 
 public interface ShowRepository extends EntityRepository<Show, String> {
+
     Observable<List<Show>> getTopShows(Size size);
 
     Observable<List<Show>> getNewReleases(Size size);
@@ -22,4 +23,6 @@ public interface ShowRepository extends EntityRepository<Show, String> {
     Observable<List<Show>> getShows(Size size);
 
     Observable<List<CategorizedShow>> getCategorizedShows(Size size);
+
+    Observable<List<Show>> getRecommendedShows(Size size);
 }

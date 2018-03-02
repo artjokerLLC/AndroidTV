@@ -1,6 +1,7 @@
 package com.smb.base
 
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
  */
 
 abstract class BaseFragment : MvpAppCompatFragment() {
-
+    var dialog: AlertDialog? = null
     protected abstract val viewId: Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -24,6 +25,20 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         onPresenterReady()
     }
 
+    fun showProgress() {
+        dialog?.dismiss()
+        dialog = activity?.let {
+            AlertDialog.Builder(it)
+                    .setCancelable(false)
+                    .setMessage("Loading")
+                    .create()
+        }
+        dialog?.show()
+    }
 
+    fun hideProgress() {
+        dialog?.dismiss()
+        dialog = null
+    }
     abstract fun onPresenterReady()
 }

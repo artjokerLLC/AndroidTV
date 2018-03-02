@@ -2,7 +2,6 @@ package com.smb.presentation.main;
 
 import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.MvpView;
-import com.smb.R;
 import com.smb.navigation.Screen;
 
 import static com.smb.navigation.Screen.HOME_TAB;
@@ -14,22 +13,22 @@ import static com.smb.navigation.Screen.SHOWS_TAB;
 
 public abstract class NavigationPresenter<T extends MvpView> extends MvpPresenter<T> {
 
-    public Screen getScreen(int itemId) {
+    public Screen getScreen(int position) {
         Screen screen = null;
-        switch (itemId) {
-            case R.id.action_home:
+        switch (position) {
+            case 0:
                 screen = HOME_TAB;
                 break;
-            case R.id.action_magic_hours:
+            case 1:
                 screen = MAGIC_HOURS_TAB;
                 break;
-            case R.id.action_rewards:
+            case 2:
                 screen = REWARDS_TAB;
                 break;
-            case R.id.action_influencers:
+            case 3:
                 screen = INFLUENCERS_TAB;
                 break;
-            case R.id.action_shows:
+            case 4:
                 screen = SHOWS_TAB;
                 break;
         }

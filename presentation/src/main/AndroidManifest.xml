@@ -30,7 +30,7 @@
 
         <activity
             android:name=".presentation.shows.activity.ShowsRootActivityTab"
-            android:launchMode="singleTask"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <meta-data

@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 public class HomeScreenDataHolder {
+
     private List<Show> topShows;
     private List<Banner> banners;
     private List<Prize> prizes;
@@ -25,6 +26,8 @@ public class HomeScreenDataHolder {
     private List<TopInfluencer> topInfluencers;
     private List<Influencer> followedInfluencers;
     private List<Video> unwatched;
+
+
     public List<Banner> getBanners() {
         return banners;
     }

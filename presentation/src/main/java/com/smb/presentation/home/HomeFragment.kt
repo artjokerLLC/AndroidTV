@@ -1,7 +1,6 @@
 package com.smb.presentation.home
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.LinearSnapHelper
 import android.view.View
@@ -16,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment(), HomeView {
 
-    var dialog: AlertDialog? = null
 
     override val viewId: Int
         get() = R.layout.fragment_home
@@ -51,6 +49,7 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun onPresenterReady() {
         showProgress()
         mHomePresenter.getData()
+
     }
 
     override fun onDataFetched(homeScreenDataHolder: HomeScreenDataHolder?) {
@@ -80,21 +79,7 @@ class HomeFragment : BaseFragment(), HomeView {
         hideProgress()
     }
 
-    fun showProgress() {
-        dialog?.dismiss()
-        dialog = activity?.let {
-            AlertDialog.Builder(it)
-                    .setCancelable(false)
-                    .setMessage("Loading")
-                    .create()
-        }
-        dialog?.show()
-    }
 
-    fun hideProgress() {
-        dialog?.dismiss()
-        dialog = null
-    }
 
     companion object {
         val TAG = "HomeFragment"

@@ -6,4 +6,6 @@
     <string name="rewards">Rewards</string>
     <string name="influencers">Influencers</string>
     <string name="shows">Shows</string>
+    <string name="recommended_title">Recommended shows</string>
+    <string name="followed_title">Followed by me</string>
 </resources>

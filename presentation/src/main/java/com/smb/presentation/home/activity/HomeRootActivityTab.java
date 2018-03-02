@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.smb.R;
 import com.smb.navigation.Screen;
 import com.smb.presentation.main.NavigationPresenter;
 import com.smb.presentation.main.TabNavigationActivity;
@@ -34,7 +33,7 @@ public class HomeRootActivityTab extends TabNavigationActivity implements HomeRo
     }
 
     @Override
-    protected int getTabId() {
-        return R.id.action_home;
+    protected int getTabPosition() {
+        return 0;
     }
 }
