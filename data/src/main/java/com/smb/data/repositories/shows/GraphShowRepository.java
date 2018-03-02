@@ -106,6 +106,7 @@ public class GraphShowRepository extends BaseDataRepository implements ShowRepos
 
     @Override
     public Observable<List<CategorizedShow>> getCategorizedShows(Size size) {
+        //refactor
         return getShows(size).map(CategorizedShowMapper.INSTANCE::map);
     }
 

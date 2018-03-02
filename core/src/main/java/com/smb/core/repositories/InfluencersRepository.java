@@ -1,5 +1,6 @@
 package com.smb.core.repositories;
 
+import com.smb.core.models.CategorizedInfluence;
 import com.smb.core.models.TopInfluencer;
 import com.smb.core.models.complex.Influencer;
 import com.smb.core.models.util.Size;
@@ -13,7 +14,14 @@ import io.reactivex.Observable;
  */
 
 public interface InfluencersRepository {
+
     Observable<List<TopInfluencer>> getTopInfluencers(Size size);
 
     Observable<List<Influencer>> getFollowed(Size size);
+
+    Observable<List<Influencer>> getRecommendedInfluencers(Size size);
+
+    Observable<List<Influencer>> getCreators(Size size);
+
+    Observable<List<CategorizedInfluence>> getCategorizedInfluencers(Size size);
 }

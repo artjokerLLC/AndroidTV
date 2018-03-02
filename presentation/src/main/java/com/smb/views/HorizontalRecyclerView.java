@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -36,6 +37,12 @@ public class HorizontalRecyclerView extends RelativeLayout {
 
     }
 
+    public static HorizontalRecyclerView addTo(Context context, ViewGroup container) {
+        HorizontalRecyclerView horizontalRecyclerView = new HorizontalRecyclerView(context);
+        container.addView(horizontalRecyclerView);
+        return horizontalRecyclerView;
+    }
+
     private void setup(Context context) {
         View root = LayoutInflater.from(context).inflate(R.layout.horizontal_recycler, this, true);
         recyclerView = root.findViewById(R.id.recycler);
@@ -43,15 +50,11 @@ public class HorizontalRecyclerView extends RelativeLayout {
         title = root.findViewById(R.id.title);
     }
 
-
     public RecyclerView getRecyclerView() {
         return recyclerView;
     }
 
-
     public TextView getTitle() {
         return title;
     }
-
-
 }

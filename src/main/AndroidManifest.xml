@@ -4,6 +4,7 @@
     <application>
         <activity android:name="com.smb.presentation.blank.ShowsActivity" />
         <activity android:name="com.smb.presentation.shows.blank.ShowsActivity" />
+        <activity android:name="com.smb.presentation.influencers.activity.blank.InfluencersRootActivity" />
     </application>
 
 </manifest>

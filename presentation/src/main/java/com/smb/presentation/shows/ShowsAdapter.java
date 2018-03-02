@@ -25,7 +25,7 @@ public class ShowsAdapter extends AbstractPreviewAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(getView(parent, R.layout.adapter_item_top_show));
+        return new ViewHolder(getView(parent, R.layout.adapter_item_show));
     }
 
     @Override

@@ -36,7 +36,7 @@ public abstract class TabNavigationActivity extends BaseActivity {
         AHBottomNavigationItem home = new AHBottomNavigationItem(R.string.home, R.drawable.home_selector, android.R.color.white);
         AHBottomNavigationItem magicHours = new AHBottomNavigationItem(R.string.magic_hours, R.drawable.home_selector, android.R.color.white);
         AHBottomNavigationItem rewards = new AHBottomNavigationItem(R.string.rewards, R.drawable.home_selector, android.R.color.white);
-        AHBottomNavigationItem influencers = new AHBottomNavigationItem(R.string.influencers, R.drawable.home_selector, android.R.color.white);
+        AHBottomNavigationItem influencers = new AHBottomNavigationItem(R.string.influencers, R.drawable.influencers_selector, android.R.color.white);
         AHBottomNavigationItem shows = new AHBottomNavigationItem(R.string.shows, R.drawable.shows_selector, android.R.color.white);
 
         navigationMenu.addItem(home);

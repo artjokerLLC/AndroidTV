@@ -8,4 +8,6 @@
     <string name="shows">Shows</string>
     <string name="recommended_title">Recommended shows</string>
     <string name="followed_title">Followed by me</string>
+    <string name="recommended_influencers_title">Recommended influencers</string>
+    <string name="creators_title">Creators</string>
 </resources>

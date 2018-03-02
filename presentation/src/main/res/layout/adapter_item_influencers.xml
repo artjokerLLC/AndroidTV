@@ -7,10 +7,17 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/imageFollowed"
+        android:id="@+id/image"
         android:layout_width="@dimen/imageTopPrizeWidth"
         android:layout_height="@dimen/imageTopPrizeHeight"
         android:background="@color/cardview_dark_background" />
 
-
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@android:color/white" />
 </LinearLayout>
