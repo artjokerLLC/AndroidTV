@@ -45,6 +45,7 @@ class AuthActivity : BaseActivity(), AuthView {
     override fun onUserLoggedIn() {
         // startActivity(TestActivity.getIntent(this))
         startActivity(HomeRootActivityTab.getIntent(this))
+        finish()
     }
 
     override fun getNavigator(): Navigator? {

@@ -157,3 +157,9 @@ query AlmostYoursQuery($limit: Int){
     ...PrizeInfo
   }
 }
+
+query RecommendedShows($limit: Int,$offset: Int){
+  recommendedShow(limit: $limit, offset: $offset){
+        ...ShowInfo
+  }
+}

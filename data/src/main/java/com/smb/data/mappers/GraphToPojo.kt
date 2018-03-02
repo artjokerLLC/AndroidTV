@@ -28,7 +28,7 @@ val fullVideo = Transformer.build<ShowsQuery.Video, Video> {
 
 val fullChapter = Transformer.build<ShowsQuery.Chapter, Chapter> {
     val fullChapter = chapter.invoke(fragments().chapterInfo())
-    media()?.fragments()?.mediaInfo()?.let{
+    media()?.fragments()?.mediaInfo()?.let {
         fullChapter.media = media.invoke(it)
     }
     fullChapter
@@ -41,6 +41,9 @@ val category = Transformer.build<ShowsQuery.Category, Category> {
 }
 
 val orderedShows = Transformer.build<OrderedShowsQuery.Show, Show> {
+    show.invoke(fragments().showInfo())
+}
+val recommendedShows = Transformer.build<RecommendedShowsQuery.RecommendedShow, Show> {
     show.invoke(fragments().showInfo())
 }
 val followedShows = Transformer.build<FollowedShowQuery.SubShow, Show> {
