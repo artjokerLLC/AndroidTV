@@ -1,14 +1,14 @@
 package com.smb.ui.show;
 
-import com.smb.core.repositories.ShowRepository;
-import com.smb.data.RxTransformers;
+import com.smb.RxTransformers;
 import com.smb.di.DependencyContainer;
+import com.smb.repositories.TestShowsRepository;
 
 import javax.inject.Inject;
 
-public class ShowPresenter{
+public class ShowPresenter {
     @Inject
-    ShowRepository showRepository;
+    TestShowsRepository showsRepository;
     private ShowView showView;
 
     public ShowPresenter(ShowView showView) {
@@ -17,7 +17,7 @@ public class ShowPresenter{
     }
 
     public void getShow(String showId) {
-        showRepository.getEntity(showId)
+        showsRepository.getRandomShow()
                 .compose(RxTransformers.applyProgress(() -> showView.showProgress(), () -> showView.hideProgress()))
                 .subscribe(show -> showView.viewShow(show), Throwable::printStackTrace);
     }

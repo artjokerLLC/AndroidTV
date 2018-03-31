@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.smb.R;
-import com.smb.data.models.Chapter;
+import com.smb.models.Chapter;
 
 import java.util.ArrayList;
 

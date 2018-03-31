@@ -26,7 +26,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.smb.R;
-import com.smb.core.models.Show;
+import com.smb.models.Show;
 
 /**
  * Displays a card with more details using a {@link DetailsFragment}.
@@ -71,7 +71,7 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
         setupEventListeners();
     }
 
-    private void setupUi(com.smb.core.models.Show show) {
+    private void setupUi(Show show) {
 
         // Setup fragment
         setTitle(show.getTitle());
@@ -125,7 +125,6 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
                 });
         ArrayObjectAdapter actionAdapter = new ArrayObjectAdapter();
 
-
         mActionPlay = new Action(ACTION_PLAY, getString(R.string.action_play));
         mActionRent = new Action(ACTION_RENT, getString(R.string.action_rent));
         mActionWishList = new Action(ACTION_WISHLIST, getString(R.string.action_wishlist));
@@ -137,19 +136,6 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
         detailsOverview.setActionsAdapter(actionAdapter);
         mRowsAdapter.add(detailsOverview);
 
-//        // Setup related row.
-//        ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(
-//                new CardPresenterSelector(getActivity()));
-//        for (Card characterCard : data.getCharacters()) listRowAdapter.add(characterCard);
-//        HeaderItem header = new HeaderItem(0, getString(R.string.header_related));
-//        mRowsAdapter.add(new CardListRow(header, listRowAdapter, null));
-//
-//        // Setup recommended row.
-//        listRowAdapter = new ArrayObjectAdapter(new CardPresenterSelector(getActivity()));
-//        for (Card card : data.getRecommended()) listRowAdapter.add(card);
-//        header = new HeaderItem(1, getString(R.string.header_recommended));
-//        mRowsAdapter.add(new ListRow(header, listRowAdapter));
-
         setAdapter(mRowsAdapter);
         new Handler().postDelayed(this::startEntranceTransition, 500);
         initializeBackground();
@@ -157,25 +143,6 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
 
     private void initializeBackground() {
         mDetailsBackground.enableParallax();
-
-//        MediaPlayerGlue playerGlue = new MediaPlayerGlue(getActivity());
-//        mDetailsBackground.setupVideoPlayback(playerGlue);
-//
-//        playerGlue.setTitle(data.getTitle().concat(" (Trailer)"));
-//        playerGlue.setArtist(data.getDescription());
-//        playerGlue.setVideoUrl(data.getTrailerUrl());
-    }
-
-    private void playMainVideoOnBackground() {
-//        VideoPlayerGlue<MediaPlayerAdapter> playerGlue = new VideoPlayerGlue(
-//                getActivity(), new LenPl(getActivity()));
-//
-//        mDetailsBackground.setupVideoPlayback(playerGlue);
-//        playerGlue.setTitle(data.getTitle() + " (Main Video)");
-//        playerGlue.setSubtitle(data.getDescription());
-//        playerGlue.getPlayerAdapter().setDataSource(Uri.parse(data.getVideoUrl()));
-//        PlaybackSeekDiskDataProvider.setDemoSeekProvider(playerGlue);
-//        mDetailsBackground.switchToVideo();
     }
 
     private void setupEventListeners() {
@@ -192,9 +159,7 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
 
         if (id == ACTION_RENT) {
 
-        } else if (action.getId() == ACTION_PLAY) {
-            playMainVideoOnBackground();
-        } else if (action.getId() == ACTION_RELATED) {
+        }else if (action.getId() == ACTION_RELATED) {
             setSelectedPosition(1);
         } else {
 
@@ -205,7 +170,7 @@ public class ShowFragment extends DetailsFragment implements OnItemViewClickedLi
     public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item,
                                RowPresenter.ViewHolder rowViewHolder, Row row) {
         if (mRowsAdapter.indexOf(row) > 0) {
-            int backgroundColor = getResources().getColor(R.color.cardview_dark_background);
+            int backgroundColor = getResources().getColor(R.color.default_background);
             getView().setBackgroundColor(backgroundColor);
         } else {
             getView().setBackground(null);

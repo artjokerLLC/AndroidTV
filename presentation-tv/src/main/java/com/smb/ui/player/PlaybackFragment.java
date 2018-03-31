@@ -37,7 +37,7 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.smb.R;
-import com.smb.data.models.Chapter;
+import com.smb.models.Chapter;
 
 
 /**

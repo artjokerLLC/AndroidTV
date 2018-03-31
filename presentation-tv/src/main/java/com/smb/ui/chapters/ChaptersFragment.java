@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.smb.R;
-import com.smb.data.models.Chapter;
+import com.smb.models.Chapter;
 import com.smb.ui.player.PlaybackActivity;
 
 import java.util.ArrayList;

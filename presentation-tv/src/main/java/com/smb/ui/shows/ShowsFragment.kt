@@ -23,24 +23,21 @@ import android.support.v17.leanback.app.BrowseFragment
 import android.support.v17.leanback.widget.*
 import android.support.v4.content.ContextCompat
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import com.apollographql.apollo.api.Response
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
 import com.smb.R
-import com.smb.data.models.Video
-import com.smb.data.repositories.shows.TestShowsRepository
 import com.smb.di.DependencyContainer
-import com.smb.models.VideoMapper
+import com.smb.models.Show
+import com.smb.models.Video
+import com.smb.repositories.TestShowsRepository
 import com.smb.ui.chapters.ChaptersActivity
 import com.smb.ui.show.activity.ShowActivity
-import data.ShowsQuery
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.*
@@ -63,7 +60,6 @@ class ShowsFragment : BrowseFragment() {
     lateinit var testShowsRepository: TestShowsRepository
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        Log.i(TAG, "onCreate")
         super.onActivityCreated(savedInstanceState)
         getTestShows()
     }
@@ -76,25 +72,20 @@ class ShowsFragment : BrowseFragment() {
                 .subscribe(::handleShowsResponse, Throwable::printStackTrace)
     }
 
-    private fun handleShowsResponse(result: Response<ShowsQuery.Data>?) {
-        val shows = result?.data()?.shows()
-        shows.let { it?.forEach({ show -> Log.e("Show", show?.fragments()?.showInfo()?.title()) }) }
+    private fun handleShowsResponse(shows: List<Show>) {
         prepareBackgroundManager()
         setupUIElements()
         loadRows(shows)
         setupEventListeners()
     }
 
-    private fun loadRows(shows: List<ShowsQuery.Show>?) {
+    private fun loadRows(shows: List<Show>?) {
         mRowsAdapter = ArrayObjectAdapter(ListRowPresenter())
         val cardPresenter = ShowsCardPresenter()
         for (i in 0..(shows?.size!! - 1)) {
             val listRowAdapter = ArrayObjectAdapter(cardPresenter)
-            shows[i].video().let { it?.forEach { video -> listRowAdapter.add(VideoMapper.map(video)) } }
-//            for (j in 0 until NUM_COLS) {
-//                listRowAdapter.add(LIST[j % 5])
-//            }
-            val header = HeaderItem(i.toLong(), shows[i].fragments().showInfo().title())
+            shows[i].videos.let { it?.forEach { video -> listRowAdapter.add(video) } }
+            val header = HeaderItem(i.toLong(), shows[i].title)
             mRowsAdapter.add(ListRow(header, listRowAdapter))
         }
 
@@ -103,20 +94,16 @@ class ShowsFragment : BrowseFragment() {
         val mGridPresenter = GridItemPresenter()
         val gridRowAdapter = ArrayObjectAdapter(mGridPresenter)
         gridRowAdapter.add(resources.getString(R.string.demo_show_details))
-//        gridRowAdapter.add(getString(R.string.error_fragment))
-//        gridRowAdapter.add(resources.getString(R.string.personal_settings))
         mRowsAdapter.add(ListRow(gridHeader, gridRowAdapter))
         adapter = mRowsAdapter
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "onDestroy: " + mBackgroundTimer?.toString())
         mBackgroundTimer?.cancel()
     }
 
     private fun prepareBackgroundManager() {
-
         mBackgroundManager = BackgroundManager.getInstance(activity)
         mBackgroundManager.attach(activity.window)
         mDefaultBackground = ContextCompat.getDrawable(activity, R.drawable.default_background)
@@ -126,44 +113,10 @@ class ShowsFragment : BrowseFragment() {
 
     private fun setupUIElements() {
         title = getString(R.string.shows)
-        // over title
         headersState = BrowseFragment.HEADERS_ENABLED
         isHeadersTransitionOnBackEnabled = true
-
-        // set fastLane (or headers) background color
         brandColor = ContextCompat.getColor(activity, R.color.fastlane_background)
-        // set search icon color
         searchAffordanceColor = ContextCompat.getColor(activity, R.color.search_opaque)
-    }
-
-    private fun loadRows() {
-        val list = VideoList.LIST
-
-        mRowsAdapter = ArrayObjectAdapter(ListRowPresenter())
-        val cardPresenter = ShowsCardPresenter()
-
-        for (i in 0 until NUM_ROWS) {
-            if (i != 0) {
-                Collections.shuffle(list)
-            }
-            val listRowAdapter = ArrayObjectAdapter(cardPresenter)
-            for (j in 0 until NUM_COLS) {
-                listRowAdapter.add(list[j % 5])
-            }
-            val header = HeaderItem(i.toLong(), VideoList.MOVIE_CATEGORY[i])
-            mRowsAdapter.add(ListRow(header, listRowAdapter))
-        }
-
-        val gridHeader = HeaderItem(NUM_ROWS.toLong(), "PREFERENCES")
-
-        val mGridPresenter = GridItemPresenter()
-        val gridRowAdapter = ArrayObjectAdapter(mGridPresenter)
-        gridRowAdapter.add(resources.getString(R.string.demo_show_details))
-        gridRowAdapter.add(getString(R.string.error_fragment))
-        gridRowAdapter.add(resources.getString(R.string.personal_settings))
-        mRowsAdapter.add(ListRow(gridHeader, gridRowAdapter))
-
-        adapter = mRowsAdapter
     }
 
     private fun setupEventListeners() {
@@ -171,7 +124,6 @@ class ShowsFragment : BrowseFragment() {
             Toast.makeText(activity, "Implement your own in-app search", Toast.LENGTH_LONG)
                     .show()
         }
-
         onItemViewClickedListener = ItemViewClickedListener()
         onItemViewSelectedListener = ItemViewSelectedListener()
     }
@@ -197,7 +149,7 @@ class ShowsFragment : BrowseFragment() {
         override fun onItemSelected(itemViewHolder: Presenter.ViewHolder?, item: Any?,
                                     rowViewHolder: RowPresenter.ViewHolder, row: Row) {
             if (item is Video) {
-                mBackgroundUri = item.cover
+                mBackgroundUri = item.coverTv
                 startBackgroundTimer()
             }
         }
@@ -208,7 +160,6 @@ class ShowsFragment : BrowseFragment() {
         val height = mMetrics.heightPixels
         Glide.with(activity)
                 .load(uri)
-//                .load("https://i.ytimg.com/vi/TcTsZulWTJI/maxresdefault.jpg")
                 .centerCrop()
                 .error(mDefaultBackground)
                 .into<SimpleTarget<GlideDrawable>>(

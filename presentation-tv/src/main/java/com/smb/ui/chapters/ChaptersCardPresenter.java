@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.smb.R;
-import com.smb.data.models.Chapter;
+import com.smb.models.Chapter;
 
 import static android.support.v17.leanback.widget.ImageCardView.CARD_TYPE_FLAG_CONTENT;
 

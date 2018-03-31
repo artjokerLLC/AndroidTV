@@ -1,6 +1,7 @@
 package com.smb.ui.show;
 
-import com.smb.core.models.Show;
+
+import com.smb.models.Show;
 
 public interface ShowView {
     void viewShow(Show show);

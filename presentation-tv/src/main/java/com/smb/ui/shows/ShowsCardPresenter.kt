@@ -24,7 +24,7 @@ import android.view.ViewGroup
 
 import com.bumptech.glide.Glide
 import com.smb.R
-import com.smb.data.models.Video
+import com.smb.models.Video
 import kotlin.properties.Delegates
 
 /**

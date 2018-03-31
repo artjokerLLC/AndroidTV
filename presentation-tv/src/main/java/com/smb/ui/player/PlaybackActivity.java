@@ -8,7 +8,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import com.smb.R;
-import com.smb.data.models.Chapter;
+import com.smb.models.Chapter;
 
 import static com.smb.ui.player.PlaybackFragment.CHAPTER_TAG;
 

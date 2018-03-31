@@ -51,7 +51,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation project(':data')
+//    implementation project(':data')
 
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation "com.google.dagger:dagger:$versions.dagger"
@@ -68,6 +68,14 @@ dependencies {
     //Multidex lib
     implementation "com.android.support:multidex:$versions.multidex"
 
+    //ExoPlayer
     api "com.google.android.exoplayer:extension-leanback:$versions.exoplayer"
+    api "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
+    api "com.github.bumptech.glide:glide:$versions.glide"
 
+    api "io.reactivex.rxjava2:rxjava:$versions.rxJava"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre8:$versions.kotlin"
+    api group: 'com.google.code.gson', name: 'gson', version: "$versions.gsonVersion"
+    api "javax.inject:javax.inject:1"
+    api "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
 }
