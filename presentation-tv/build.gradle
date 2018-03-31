@@ -15,17 +15,6 @@ android {
         versionName versions.versionName
         multiDexEnabled true
     }
-    signingConfigs {
-        release {
-            //todo add here release keys
-        }
-        debug {
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-            storeFile file("$rootProject.projectDir/keystore/debug.keystore")
-            storePassword 'android'
-        }
-    }
     buildTypes {
         release {
             minifyEnabled false

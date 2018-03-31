@@ -10,3 +10,5 @@
 Будет удалено .idea/
 libs/
 /.idea/modules.xml
+/src/
+/gradle/
