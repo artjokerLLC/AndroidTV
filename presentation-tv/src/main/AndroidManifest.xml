@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.smb">
+    package="com.tv">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -14,14 +14,14 @@
         android:required="true" />
 
     <application
-        android:name=".application.BaseApplication"
+        android:name="com.tv.application.BaseApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Leanback">
         <activity
-            android:name=".ui.shows.ShowsActivity"
+            android:name="com.tv.ui.shows.ShowsActivity"
             android:banner="@drawable/app_icon_your_company"
             android:icon="@drawable/app_icon_your_company"
             android:label="@string/app_name"
@@ -33,9 +33,9 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.chapters.ChaptersActivity" />
-        <activity android:name=".ui.player.PlaybackActivity" />
-        <activity android:name=".ui.show.activity.ShowActivity" />
+        <activity android:name="com.tv.ui.chapters.ChaptersActivity" />
+        <activity android:name="com.tv.ui.player.PlaybackActivity" />
+        <activity android:name="com.tv.ui.show.activity.ShowActivity" />
     </application>
 
 </manifest>

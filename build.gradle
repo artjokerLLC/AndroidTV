@@ -10,7 +10,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$versions.gradlePlugin"
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "com.apollographql.apollo:apollo-gradle-plugin:$versions.apolloPlugin"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath 'io.fabric.tools:gradle:1.+'

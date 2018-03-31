@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">smb</string>
+    <string name="app_name">Android TV Demo</string>
     <string name="browse_title"><![CDATA[SMB]]></string>
     <string name="related_movies">Related Videos</string>
     <string name="demo_show_details">Demo show details</string>
